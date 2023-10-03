@@ -7,11 +7,7 @@ Acesso a visão e backlog do projeto no [trello](https://trello.com/invite/b/4eL
 # Fase de inception
 Acesso ao pdf no [drive](https://drive.google.com/file/d/1u-0_GWS4_0WnSkj-uCS_jNvwLj4X45gu/view?usp=sharing)
 
-<<<<<<< HEAD
-# Rabisco Frame, Diagrama de Navegação, Backlog e DRE
-=======
 # Rabisco Frame, Diagrama de Navegação e Backlog
->>>>>>> 22786b8 (b)
 Acesso a pasta no [drive](https://drive.google.com/drive/folders/1nJLIWwRGd0IWSdzd9has1EdR7CbCLNIV?usp=sharing)
 
 #### *O product backlog está no quadro do Trello*
