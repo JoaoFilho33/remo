@@ -2,7 +2,7 @@
 
 # Ferramenta de gerenciamento de projetos
 Trello </br>
-Acesso a visão e backlog do projeto no (trello)[https://trello.com/invite/b/4eLAKfZO/ATTI10b625673a573cb79bdc7cde79a38b0f2C500B27/tasks-back]
+Acesso a visão e backlog do projeto no [trello](https://trello.com/invite/b/4eLAKfZO/ATTI10b625673a573cb79bdc7cde79a38b0f2C500B27/tasks-back)
 
 # Fase de inception
 Acesso ao pdf no (drive)[https://drive.google.com/file/d/1u-0_GWS4_0WnSkj-uCS_jNvwLj4X45gu/view?usp=sharing]
