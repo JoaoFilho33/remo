@@ -26,5 +26,4 @@ public class PrateleiraFilme {
     @ManyToOne
     @JoinColumn(name = "prateleira_id")
     private Prateleira prateleira;
-
 }
