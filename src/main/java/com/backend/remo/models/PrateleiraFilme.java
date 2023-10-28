@@ -16,7 +16,7 @@ public class PrateleiraFilme {
     @Column(name = "status_filme")
     private String statusFilme;
 
-    @Column(name = "estralas")
+    @Column(name = "estrelas")
     private Double estrelas;
 
     @ManyToOne
