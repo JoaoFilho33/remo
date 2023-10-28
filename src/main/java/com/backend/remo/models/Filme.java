@@ -27,9 +27,8 @@ public class Filme {
     @Column(name = "genero")
     private String genero;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "filme")
+    @OneToMany(mappedBy = "filme", cascade = CascadeType.ALL)
     private List<PrateleiraFilme> prateleiraFilmes;
-
 
 
 }

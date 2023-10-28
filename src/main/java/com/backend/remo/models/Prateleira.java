@@ -22,6 +22,6 @@ public class Prateleira {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "filme")
+    @OneToMany(mappedBy = "prateleira", cascade = CascadeType.ALL)
     private List<PrateleiraFilme> prateleiraFilmes;
 }
