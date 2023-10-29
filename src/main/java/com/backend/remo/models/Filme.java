@@ -29,6 +29,4 @@ public class Filme {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "filme")
     private List<PrateleiraFilme> prateleiraFilmes;
-
-
 }
