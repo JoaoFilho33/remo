@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 import java.util.List;
 
+//Participante é o relacionamento entre usuário e comunidade
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Participante {

@@ -57,7 +57,7 @@ public class UsuarioController{
         Usuario byeUsuario = usuarioService.removeUsuario(id);
         if(byeUsuario == null) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Usuário não encontrada"
+                    HttpStatus.NOT_FOUND, "Usuário não encontrado"
             );
         }
 
