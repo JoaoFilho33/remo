@@ -1,0 +1,49 @@
+.WikisPopulares {
+/*     background-color: rgb(226, 226, 226);
+ */    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+    flex-wrap: wrap;
+    
+
+
+    & .WikiPopular {
+        background-color: rgb(189, 180, 180);
+        display: flex;
+        margin: 0;
+    }
+}
+
+.WikiStyle {
+    display: flex;
+    flex-direction: column;
+     max-width:14rem; 
+
+    & a {
+        text-decoration: none;
+    }
+
+    .GoToPerfil {
+        color: #6d6b6b;
+        font-size: smaller;
+        margin: 0;
+        margin-bottom: 0;
+    }
+
+    & h3 {
+        margin: 0;
+        margin-left: 1px;
+        text-decoration: none;
+        color: black;
+        background-color: #00A310;
+        margin-bottom: 0;
+        padding: 0.2rem;
+    }
+
+    & .BtLikeDislike{
+        display: flex;
+        align-self: flex-end;
+    }
+
+}

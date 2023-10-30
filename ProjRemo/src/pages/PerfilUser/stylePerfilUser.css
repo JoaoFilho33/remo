@@ -1,0 +1,153 @@
+.ContainerPerfil {
+    display: flex;
+    flex-direction: column;
+
+    & .GrupPostagens {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around; /* Correção aqui */
+        margin: 0 1rem;
+        flex-wrap: wrap;
+        
+        & .Postagem {
+            padding: 0.4rem; ;
+            background-color: rgb(205, 205, 205);
+            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            max-width: 9rem;
+            max-height: 10rem;
+            justify-content: space-between;     
+            gap: 0.5rem;
+
+            & p:first-of-type { /* Use :first-of-type */
+                margin-top: 0; /* Gruda na parte superior */
+                align-self: start;
+                font-weight: bold;
+                flex-wrap: wrap;
+               
+                
+            }
+
+            & p:last-of-type { /* Use :last-of-type */
+                color: #9b9999;
+                margin: 0;
+                align-self: flex-end;
+                font-size: small;
+            }
+            
+
+
+            
+        }
+    }
+
+    & .GroupWikis {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0 1rem;
+        flex-wrap: wrap;
+
+
+
+        & .wikiteste{
+            background-color: rgb(189, 180, 180);
+        
+        }
+    }
+
+    .BtBotoes{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-end;
+
+        & button {
+           background-color: rgb(64, 64, 64);
+           color: white;
+           border: none;
+           border-radius: 10px;
+       } 
+
+       & button:hover{
+        background-color: gray;
+       }
+    }
+
+
+
+
+    .AddPostagem{
+        justify-content: space-between;
+        border-radius: 10px;
+        align-self: center;
+        padding: 1rem;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+        max-width: 60%;
+        border:solid 0.5px  #00A310;
+        gap: 20px;
+
+       & .nome{
+            border-radius: 20px;
+            background-color: #9b9999;
+            border: none;
+            width:  15rem;
+            height: 2rem;
+        }
+        & label{
+            display: flex;
+            background-color: aqua;
+            flex-direction: row;
+            font-size: medium;
+            color: #9b9999;
+
+        }
+
+        & button{
+            border-radius: 20px;
+            background-color: #034309;
+            color: white;
+            padding: 0.3rem;
+        }
+    }
+}
+
+.divPrateleira {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+    & .GoPrateleira {
+        text-decoration: none;
+        color: white;
+        background-color: #00A310;
+        margin-top: 1rem;
+        height: 100%; 
+        padding: 1rem 4rem;
+        border-radius: 80px;
+    } 
+    
+    & .GoPrateleira:hover {
+        background-color: #034309;
+    }
+}
+
+.MostrarAdd{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    & button{
+        font-size: large;
+        color: white;
+        background-color:#00A310;
+        max-height: 3rem;
+        border: none;
+        border-radius: 80px;
+    }
+}
+

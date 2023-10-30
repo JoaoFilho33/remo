@@ -1,0 +1,23 @@
+.TextWiki{
+    display: flex;
+    flex-direction: column;
+    & h1 {
+       align-self: center;
+    }
+    & .GoToComunidade{
+         display: flex;
+         flex-direction: row-reverse;
+
+         
+         & a{
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: rgb(181, 181, 181);
+            border-radius: 20px;
+         }
+
+        
+        
+    }
+}

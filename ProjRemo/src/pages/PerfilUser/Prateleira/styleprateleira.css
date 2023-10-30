@@ -1,0 +1,22 @@
+.Prateleira{
+    display: flex;
+    flex-direction: column;
+    
+    & .AddPrateleira{
+        padding:  10px;
+        display:flex ;
+        flex-direction: column;
+        align-self: center;
+        gap: 1rem;
+        background-color:  purple;
+
+        & input, select {
+            background-color: aqua;
+            border-radius: 20px;
+            border: none;
+
+        }
+
+        
+    }
+}
