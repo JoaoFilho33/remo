@@ -27,7 +27,7 @@ public class ParticipanteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Participante> getParticipanteById(@PathVariable(value = "id") Long id) {
-        Participante participante = participanteService.getParticipanteById(id);
+        Participante participante = participanteService.getParticipanteId(id);
 
         if (participante == null) {
             throw new ResponseStatusException(
