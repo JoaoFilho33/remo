@@ -1,11 +1,10 @@
 package com.backend.remo.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -35,6 +34,8 @@ public class Usuario {
     @Column(name = "foto")
     private String foto;
 
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<Prateleira> prateleiras;
 }

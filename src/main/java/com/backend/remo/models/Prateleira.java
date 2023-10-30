@@ -1,5 +1,7 @@
 package com.backend.remo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +21,7 @@ public class Prateleira {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prateleira")
     private List<PrateleiraFilme> prateleiraFilmes;
 }

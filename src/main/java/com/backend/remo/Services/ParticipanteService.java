@@ -6,6 +6,7 @@ import com.backend.remo.repositories.ParticipanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,7 +14,7 @@ public class ParticipanteService {
     @Autowired
     private ParticipanteRepository participanteRepository;
 
-    public Object getAllParticipantes() {
+    public List<Participante> getAllParticipantes() {
         return participanteRepository.findAll();
     }
 
