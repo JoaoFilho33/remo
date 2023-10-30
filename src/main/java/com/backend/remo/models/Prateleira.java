@@ -15,9 +15,6 @@ public class Prateleira {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "status_id")
-    private String statusId;
-
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;

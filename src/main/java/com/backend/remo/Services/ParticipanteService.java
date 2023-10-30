@@ -17,7 +17,7 @@ public class ParticipanteService {
         return participanteRepository.findAll();
     }
 
-    public Participante getParticipanteById(Long id) {
+    public Participante getParticipanteId(Long id) {
         return participanteRepository.findById(id).orElse(null);
     }
 
