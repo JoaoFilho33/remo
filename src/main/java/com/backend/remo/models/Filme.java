@@ -1,5 +1,6 @@
 package com.backend.remo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +31,7 @@ public class Filme {
     @Column(name = "genero")
     private String genero;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "filme")
     private List<PrateleiraFilme> prateleiraFilmes;
 }

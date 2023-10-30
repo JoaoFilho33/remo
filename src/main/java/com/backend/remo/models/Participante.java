@@ -1,5 +1,6 @@
 package com.backend.remo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +32,7 @@ public class Participante {
     @JoinColumn(name = "id_comunidade")
     private Comunidade comunidade;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "participante")
     private List<Wiki> wikis;
 }

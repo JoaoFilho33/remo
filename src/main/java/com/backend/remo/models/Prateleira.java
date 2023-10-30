@@ -21,6 +21,8 @@ public class Prateleira {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+
+    @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prateleira")
     private List<PrateleiraFilme> prateleiraFilmes;
