@@ -1,5 +1,6 @@
 package com.backend.remo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,10 +26,10 @@ public class Wiki {
     private String titulo;
 
     @ManyToOne
-    @JoinColumn(name = "id_participante")
+    @JoinColumn(name = "id_participante", nullable = false)
     private Participante participante;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "wiki")
     private List<Reage> reages;
-
 }
