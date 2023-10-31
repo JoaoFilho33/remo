@@ -17,7 +17,7 @@ export function RoutesApp(){
                 <Route path="/" element={<PagInicial/>}/>
                 <Route path="/Pesquisar" element={<Pesquisar/>}/>
                 <Route path="/Perfil" element={<PerfilUser/>}/>
-                <Route path="/Perfil/Preleira/:id" element={<Prateleira/>}/>
+                <Route path="/Perfil/Prateleira/:id" element={<Prateleira/>}/>
                 <Route path="/Wiki/:id" element={<Wikis/>}/>
                 <Route path="/Perfil/Comunidade/:id" element={<Comunidade/>}/>
                 <Route path="/Perfil/Comunidade/" element={<Comunidades/>}/>
