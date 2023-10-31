@@ -1,5 +1,5 @@
 import  { useState } from 'react';
-
+import "./StyleComunidade.css"
 export function Comunidade() {
   // Estado para rastrear as wikis da comunidade
   const [wikis, setWikis] = useState([
@@ -34,19 +34,21 @@ export function Comunidade() {
       <h2>Perfil da Comunidade</h2>
 
       <h3>Wikis na Comunidade</h3>
-      <div>
+      <div className='WikiComunidade'>
         {wikis.map((wiki) => (
-          <div key={wiki.id}>
-            <h4>{wiki.titulo}</h4>
+          <div  key={wiki.id}>
+            <div className='WikiInComunidade'>
+            <h3>{wiki.titulo}</h3>
             <p>{wiki.conteudo}</p>
             <p>Curtidas: {wiki.curtidas}</p>
             <button onClick={() => curtirWiki(wiki.id)}>Curtir</button>
+            </div>
           </div>
         ))}
       </div>
 
       <h3>Adicionar Nova Wiki</h3>
-      <div>
+      <div className='AddWiki' >
         <input
           type="text"
           placeholder="Título da Wiki"
@@ -61,8 +63,8 @@ export function Comunidade() {
         <button onClick={adicionarWiki}>Adicionar Wiki</button>
       </div>
 
-      <h3>Participantes da Comunidade</h3>
-      {/* Aqui você pode listar os participantes da comunidade */}
-    </div>
+     {/*  <h3>Participantes da Comunidade</h3>*/}
+    
+    </div> 
   );
 }

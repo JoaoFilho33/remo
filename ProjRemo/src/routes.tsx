@@ -6,6 +6,7 @@ import { PerfilUser } from "./pages/PerfilUser"
 import { Prateleira } from "./pages/PerfilUser/Prateleira"
 import { Wikis } from "./pages/Comunidades/Wikis"
 import { Comunidade } from "./pages/Comunidades/Comunidade"
+import { Comunidades } from "./pages/Comunidades"
 
 
 export function RoutesApp(){
@@ -19,6 +20,7 @@ export function RoutesApp(){
                 <Route path="/Perfil/Preleira/:id" element={<Prateleira/>}/>
                 <Route path="/Wiki/:id" element={<Wikis/>}/>
                 <Route path="/Perfil/Comunidade/:id" element={<Comunidade/>}/>
+                <Route path="/Perfil/Comunidade/" element={<Comunidades/>}/>
 
          </Routes>
         

@@ -1,0 +1,73 @@
+.WikiComunidade{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    & .WikiInComunidade{
+        background-color: rgb(189, 180, 180);
+    display: flex;
+    flex-direction: column;
+    max-width: 20%;
+
+
+    & h3{
+        margin-top: 0;
+        color: #ffffff;
+        background-color:  #00A310;;
+    }
+    
+    & p:last-of-type{
+        align-self: self-end;
+        color: #6d6b6b;
+        margin-right: 0.4rem;
+    }
+
+    & button{
+        align-self: self-end;
+        padding: 2%;
+        color: white;
+        background-color:  #00A310;
+        border-radius: 20px;
+        border: none;
+        margin-bottom: 0.7rem;
+        margin-right: 0.4rem;
+    }
+}
+
+}
+
+.AddWiki{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: white;
+    
+    
+    & input{
+        background-color: #00A310;
+        width: 19.8rem;
+        align-self: center;
+        color: white;
+        
+    }
+
+    & textarea{
+        background-color: rgb(198, 198, 198);
+        height: 5rem;
+        width: 50rem;
+        align-self: self-end;
+    }
+    & button{
+        background-color: #00A310;
+             align-self: self-end;
+             border: none;
+             padding: 8px;
+
+    }
+    & input::placeholder,
+    textarea::placeholder {
+  color: rgb(255, 255, 255);
+}
+
+}

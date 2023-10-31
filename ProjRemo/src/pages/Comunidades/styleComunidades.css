@@ -1,0 +1,69 @@
+.AllComunidades {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; 
+    gap: 30%;
+}
+
+.AddComunidades{
+    background-color: rgb(238, 238, 238);
+    align-self: center
+
+}
+
+.AddComunidades .Cadastro {
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+    box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
+
+
+
+    & input:first-of-type {
+        width: 20rem;
+        background-color: rgb(173, 173, 173);
+        border: none;
+    }
+    & input:last-of-type {
+        border: none;
+        width: 20rem;
+        height: 7rem;
+        justify-self: start;
+        background-color: rgb(173, 173, 173);
+    }
+
+    & button {
+        background-color: #00A310;
+        color: white;
+        border: none;
+    }
+}
+
+.ListaComunidades {
+    box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
+
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgb(211, 211, 211);
+    margin-right: 0;
+    width: 10%;
+
+    & a {
+        display: flex;
+        padding: 1px; 
+        color: aliceblue;
+        background-color: rgb(58, 193, 13);
+    }
+
+    & a:hover {
+        color: rgb(255, 255, 255);
+        background-color: #00A310;
+    }
+}
+

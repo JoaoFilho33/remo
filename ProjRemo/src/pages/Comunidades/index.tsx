@@ -1,13 +1,55 @@
-export function Comunidades(){
-    return(
-        <>
+import  { useState } from 'react';
+import "./styleComunidades.css"
 
-          <button>Criar comunidade</button>
-          {/* comunidade deve ser clicavel para a pag da cominidade */}
-            <p>Comunidade 1</p>
-            <p>Comunidade 2</p>
-            <p>Comunidade 3</p>
-            <p>Comunidade 4</p>
-        </>
-    )
+export function Comunidades() {
+  const [comunidades, setComunidades] = useState([]);
+  const [nome, setNome] = useState('');
+  const [descricao, setDescricao] = useState('');
+
+  const criarComunidade = () => {
+    if (nome && descricao) {
+      const novaComunidade = {
+        nome,
+        descricao,
+      };
+      setComunidades([...comunidades, novaComunidade]);
+      setNome('');
+      setDescricao('');
+    }
+  };
+
+  return (
+    <div >
+      <h1>Comunidades</h1>
+      <div className='AllComunidades'>
+      <div className='AddComunidades'>
+        <div className='Cadastro'>
+
+       
+        <input
+          type="text"
+          placeholder="Nome da Comunidade"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Descrição da Comunidade"
+          value={descricao}
+          onChange={(e) => setDescricao(e.target.value)}
+        />
+        <button onClick={criarComunidade}>Criar Comunidade</button>
+        </div>
+        
+      </div>
+      <div className='ListaComunidades'>
+        {comunidades.map((comunidade, index) => (
+          <p key={index}>
+            <a href={`/Perfil/Comunidade/${index}`}>{comunidade.nome}</a>
+          </p>
+        ))}
+      </div>
+      </div>
+    </div>
+  );
 }

@@ -81,3 +81,12 @@ export function PagInicial() {
         </div>
     );
 }
+
+
+/* 
+
+WIKI -> COLUNM
+CARROSSEL -> AVALIAÇÃO
+
+
+*/
