@@ -20,7 +20,7 @@ export function Comunidades() {
 
   return (
     <div >
-      <h1>Comunidades</h1>
+      <h1>Nova comunidade</h1>
       <div className='AllComunidades'>
       <div className='AddComunidades'>
         <div className='Cadastro'>
@@ -43,6 +43,7 @@ export function Comunidades() {
         
       </div>
       <div className='ListaComunidades'>
+        <p>Comunidades</p>
         {comunidades.map((comunidade, index) => (
           <p key={index}>
             <a href={`/Perfil/Comunidade/${index}`}>{comunidade.nome}</a>

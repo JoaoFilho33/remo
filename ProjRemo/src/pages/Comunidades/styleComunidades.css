@@ -54,6 +54,13 @@
     margin-right: 0;
     width: 10%;
 
+
+    & p{
+        margin-top: 0;
+        background-color: #00A310;
+        color: white;
+    }
+
     & a {
         display: flex;
         padding: 1px; 

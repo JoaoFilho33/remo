@@ -5,8 +5,9 @@
     flex-direction: row;
     justify-content: space-between;
     box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
+    max-height: 3.8rem;
     & .logoNav{
-        max-width: 80px;
+        max-width: 50px;
     }
 
 & .BarraPesquisa{    

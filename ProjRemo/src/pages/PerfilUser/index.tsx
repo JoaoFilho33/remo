@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './stylePerfilUser.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+
 
 export function PerfilUser() {
   const [postagens, setPostagens] = useState([
@@ -38,6 +41,7 @@ export function PerfilUser() {
       setCurrentIndex(currentIndex - postsPerPage);
     }
   };
+  const [showPrateleiraInfo, setShowPrateleiraInfo] = useState(false);
 
   const editarCurtiu = (postId: number, novoLike: boolean) => {
     const novasPostagens = postagens.map(postagem => {
@@ -49,19 +53,36 @@ export function PerfilUser() {
     setPostagens(novasPostagens);
   };
 
+   
   return (
     <div className="ContainerPerfil">
       <div className='divPrateleira'>
-        <Link className='GoPrateleira' to="/Perfil/Prateleira/:id">
-          <p>Vistos: 10 | Fila: 3 | Em Pausa: 4</p>
-        </Link>
-        <div className='comunidade'>
-          <Link to={"/Perfil/Comunidade"}>
-            <button>Comunidades</button>
-          </Link>
+        {/* Adicione o evento onMouseEnter para mostrar informações quando o mouse passar sobre "Prateleira" */}
+        <div
+          className="Prateleira"
+          onMouseEnter={() => setShowPrateleiraInfo(true)}
+          onMouseLeave={() => setShowPrateleiraInfo(false)}
+        >
+          <Link className='GoOutraPag' to="/Perfil/Prateleira/:id">
+            <p>Prateleira</p>
+            </Link>
+          {showPrateleiraInfo && (
+            <div className="PrateleiraInfoContent">
+            
+              <p>Filmes Vistos: X</p>
+              <p>Em Pausa: Y</p>
+              <p>Na Fila: Z</p>
+      
+            </div>
+            
+            )}
         </div>
+        <Link className='GoOutraPag' to="/Perfil/Comunidade">
+          <p>Comunidades</p>
+        </Link>
       </div>
       <h2>Minhas postagens</h2>
+      <div className='linha'></div>
 
       <div className="GrupPostagens">
         <div className="PostagemContainer">
@@ -72,8 +93,7 @@ export function PerfilUser() {
               <p>{postagem.like ? "Curtiu" : "Não curtiu"}</p>
               <div className='BtBotoes'>
                 <button onClick={() => editarCurtiu(postagem.id, !postagem.like)}>
-                  Editar
-                </button>
+                <FontAwesomeIcon icon={faThumbsUp} />                </button>
               </div>
             </div>
           ))}

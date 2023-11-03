@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
 
+    & h2{
+      color:#006c0b;
+    }
+    
+
     & .PostagemContainer {
       width: 100%; /* Ajuste isso para a largura desejada */
       overflow: hidden;
@@ -35,6 +40,8 @@
 
         }
       }
+
+   
 
 
       & .Postagem {
@@ -117,8 +124,9 @@
            background-color:#00A310;
            color: white;
            border: none;
-           border-radius: 0px;
-           
+           border-radius: 5px;
+           transition: background-color 0.2s;
+           ;
           } 
           
           & button:hover{
@@ -169,34 +177,81 @@
 
 .divPrateleira {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: center;
+    gap: 2rem;
+  
+      & .Prateleira{
+        height: 1rem;
+        transition: height 0.5s;
+
+        & .PrateleiraInfoContent {
+          align-items: start;
+          gap: 0.2rem;
+          display: flex;
+          flex-direction: column;
+          background-color:hsl(126, 92%, 20%);
+          
+          padding: 0; 
+          margin-top: 0; 
+          
+          
+            & p{
+              margin: 0;
+              color: rgb(255, 255, 255);
+            }
+          }
+
+          & .teste :hover{
+            height: 8rem;
+
+          }
+
+          
     
+        }
     
+        & .PrateleiraInfoContent :hover{
+          display: flex;
+
+        }
+        
+      
+
+      & .Prateleira:hover{
+        height: 5rem;
+
+
+      }
+
     
-    & .GoPrateleira {
+
+    
+    & .GoOutraPag {
         box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
        display: flex;
        justify-content: center;
-        width: 50rem;
+       align-items: center;
+        width: 10rem;
         text-decoration: none;
         color: white;
         background-color: #00A310;
         margin-top: 1rem;
-        height: 100%; 
-        padding: 1rem 4rem;
-        border-radius: 10px;
-        transition: background-color 0.5s;
+        height: 2rem; 
+        
+        border-radius:10px  10px    0  0px ;
+        transition: background-color 0.3s;
 
     } 
     
-    & .GoPrateleira:hover {
+    & .GoOutraPag:hover {
         background-color: #034309;
     }
 
+  } 
 
     
-}
 
 .MostrarAdd{
     display: flex;
@@ -216,9 +271,11 @@
 
 .SimpleTimeline {
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   & a {
@@ -227,7 +284,6 @@
   
   & .WikiItem {
     background-color: #f3f3f3;
-    border: 2px solid #27d610;
     border-radius: 5px;
     padding: 20px;
     max-width: 400px;
@@ -236,6 +292,7 @@
     text-align: center;
     position: relative;
     transition: transform 0.2s ease-in-out;
+    margin-right: 2.5rem;
   }
   
   & .WikiItem h3 {
