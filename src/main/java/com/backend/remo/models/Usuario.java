@@ -38,4 +38,16 @@ public class Usuario {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<Prateleira> prateleiras;
+
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seguidor")
+    private List<Segue> seguidor;
+
+
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seguido")
+    private List<Segue> seguido;
+
 }
