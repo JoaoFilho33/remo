@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - /Documents/postgres/remo/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=remo
+      - POSTGRES_USER=remo
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - '5432:5432'
