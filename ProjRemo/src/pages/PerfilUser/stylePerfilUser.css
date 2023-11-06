@@ -271,7 +271,7 @@
 
 .SimpleTimeline {
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -331,3 +331,55 @@
       }
     }
   }
+
+  @media screen and (max-width: 570px) {
+   
+
+   
+
+      
+
+    .PostagemContainer {
+      width: 100%; 
+         
+      }
+    
+    .PostWiki{
+
+      
+
+      & .SimpleTimeline {
+        justify-content: end;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap:  nowrap;
+          z-index: 10;
+     
+    
+      }
+      & .WikiItem {
+       height: 10rem;
+        padding: 10px;
+        max-width: 12rem;
+        width: 100%;
+      
+      
+        transition: transform 0.2s ease-in-out;
+        margin-right: 2.5rem;
+      }
+
+
+    }
+
+
+   
+    
+
+
+
+  }
+
+
+
+
+  

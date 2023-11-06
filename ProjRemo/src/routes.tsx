@@ -12,7 +12,11 @@ import { Comunidades } from "./pages/Comunidades"
 export function RoutesApp(){
     return(
         <BrowserRouter>
+        
+          
             <NavBar/>
+           
+          
             <Routes>
                 <Route path="/" element={<PagInicial/>}/>
                 <Route path="/Pesquisar" element={<Pesquisar/>}/>
@@ -23,8 +27,10 @@ export function RoutesApp(){
                 <Route path="/Perfil/Comunidade/" element={<Comunidades/>}/>
 
          </Routes>
+       
         
         
+     
         </BrowserRouter>
         
     )  

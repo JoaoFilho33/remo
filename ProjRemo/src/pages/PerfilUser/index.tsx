@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './stylePerfilUser.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,7 +28,20 @@ export function PerfilUser() {
   ]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const postsPerPage = 4;
+  const postsPerPage = window.innerWidth <= 570 ? 2 : 4;   
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setCurrentIndex(0); // Redefina o índice ao redimensionar a tela
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
 
   const handleNext = () => {
     if (currentIndex + postsPerPage < postagens.length) {
@@ -89,7 +102,7 @@ export function PerfilUser() {
           {postagens.slice(currentIndex, currentIndex + postsPerPage).map((postagem) => (
             <div className="Postagem" key={postagem.id}>
               <span>@{postagem.nomeUser}</span>
-              <p>{postagem.filme.length > 50 ? `${postagem.filme.substring(0, 50)}...` : postagem.filme}</p>
+              <p>{postagem.filme.length > 25 ? `${postagem.filme.substring(0, 25)}...` : postagem.filme}</p>
               <p>{postagem.like ? "Curtiu" : "Não curtiu"}</p>
               <div className='BtBotoes'>
                 <button onClick={() => editarCurtiu(postagem.id, !postagem.like)}>

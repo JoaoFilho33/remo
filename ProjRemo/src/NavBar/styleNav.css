@@ -1,3 +1,5 @@
+
+
 .navbar{   
     align-items: center;
     background-color: #8BD87F ;
@@ -5,7 +7,7 @@
     flex-direction: row;
     justify-content: space-between;
     box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
-    max-height: 3.8rem;
+   height: 3.8rem;
     & .logoNav{
         max-width: 50px;
     }
@@ -50,19 +52,164 @@
 
 
     & .usuario{
-        display: flex;
-        flex-direction: column;
         margin-right: 1rem;
         align-items: center;
         gap: 0.3rem;
         & a{
+            
+            
+            display: flex;
+            flex-direction: column;
             color:  white;
             text-decoration: none;
             font-weight: bolder;
+
+            & .fa-user{
+                font-size: 1.5rem; 
+                color: white;
+              }
         }
         & a:hover{
             color:  #227216 ;
+
+
             
         }
         
     }
+
+
+
+ @media screen and (max-width:620px) {
+    .navbar{ 
+
+        & .usuario{
+            & a{
+                font-size: smaller;             
+            }
+        }
+       
+        & .BarraPesquisa{    
+        
+            & input:first-child  {
+                padding:  1vh 2vw;
+            }
+           
+        }
+    }
+}
+
+
+    @media screen and (max-width: 570px) {
+       
+
+        & .navbar{ 
+            z-index: 2; /* Z-index maior do que os elementos .WikiItem */
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+
+            & .logoNav{
+                max-width: 60px;
+            }
+            
+
+            & .BarraPesquisa {
+                flex-direction: column;
+                gap: 0.2rem;
+                max-width: 90vw;
+
+                
+                & input:first-of-type{
+                    display: none; 
+
+                }
+                & input:last-of-type{
+                    padding: 2vw;
+                    border-radius: 10px;
+
+                }
+            }
+
+
+            & .usuario{
+                margin-bottom: 10px;
+                margin-right: 2rem;
+                
+            
+                 & a{
+                   & span{
+                       display: none;  
+                     }          
+                   & .fa-user{
+                      font-size: 2rem; 
+                    }
+                
+                }
+            }
+           
+
+
+           }
+
+
+           /*  & .navbar{ 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                height: 100vh;
+                width: 23vw;
+                position: fixed;
+                top: 0;
+                left: 0;
+
+                & .logoNav{
+                    max-width: 80px;
+                }
+                
+
+                & .BarraPesquisa {
+                    flex-direction: column;
+                    gap: 0.2rem;
+                    max-width: 90vw;
+
+                    
+                    & input:first-of-type{
+                        display: none; 
+
+                    }
+                    & input:last-of-type{
+                        padding: 2vw;
+                        border-radius: 10px;
+
+                    }
+                }
+    
+
+                & .usuario{
+                    margin-bottom: 10px;
+                    
+                
+                     & a{
+                       & span{
+                           display: none;  
+                         }          
+                       & .fa-user{
+                          font-size: 2rem; 
+                        }
+                    
+                    }
+                }
+            }
+        
+ */
+           
+
+    }
+
+    

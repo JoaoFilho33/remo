@@ -15,6 +15,7 @@ export function NavBar() {
   };
 
   return (
+    
     <div className="navbar">
       <Link to={"/"}>
         <img className='logoNav' src={logo} alt="Logo Sem Fundo" />
@@ -31,13 +32,14 @@ export function NavBar() {
       </div>
         </Link>
       <div className="usuario">
-        <FontAwesomeIcon icon={faUser}  style={{color: 'white', fontSize: '1.5rem'}}/>
-        {/* <span>{userName}</span> */}
         <Link to={"/Perfil"}>
+        <FontAwesomeIcon  icon={faUser}  /* style={{color: 'white', fontSize: '2rem'}} *//>
+        
           <span>@{userName}</span>
         </Link>
       </div>
     </div>
+    
 
   );
 }
