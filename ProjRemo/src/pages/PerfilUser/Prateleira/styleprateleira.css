@@ -1,22 +1,123 @@
-.Prateleira{
+.Prateleira {
+  display: flex;
+  flex-direction: column;
+
+  
+
+  & h2, h3, label {
+    color: #01800d;
+  }
+
+  & .AddPrateleira {
+    box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    
-    & .AddPrateleira{
-        padding:  10px;
-        display:flex ;
-        flex-direction: column;
-        align-self: center;
-        gap: 1rem;
-        background-color:  purple;
+    align-self: center;
+    gap: 1rem;
+    background-color: rgb(241, 241, 241);
 
-        & input, select {
-            background-color: aqua;
-            border-radius: 20px;
-            border: none;
-
-        }
-
-        
+    & input::placeholder {
+      color: #ffffff;
     }
+
+    & input,
+    select {
+      color: white;
+      background-color: rgb(15, 175, 52);
+      border-radius: 5px;
+      border: none;
+
+    }
+
+    & button {
+      color: white;
+      display: flex;
+      align-self: center;
+      border-radius: 10px;
+      border: none;
+      background-color: rgb(18, 152, 18);
+    }
+  }
+}
+
+.BtCategory{
+  display: flex;
+  margin-top: 1.5rem;
+  justify-content: center;
+  gap: 0.7rem;
+  
+  & button{
+    box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
+    background-color: #01800d;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 2px;
+
+  }
+
+  & button:hover{
+    background-color: #02700d;
+    
+  }
+}
+
+.Listas {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8rem;
+
+  & ul {
+    list-style: none;
+    margin-left: 1rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    
+
+    & li {
+      margin: 0;
+      padding: 10px;
+      box-shadow: -1px 0.5px 0.5rem rgb(182, 181, 181);
+      background-color: #dadada;
+       align-items: center;
+      display: flex;
+      flex-direction: column;
+
+
+
+      & img{
+        max-width: 3rem;
+      }
+
+      & p {
+        margin: 0;
+      }
+      & p:first-of-type {
+        color: rgb(0, 94, 0);
+        align-self: center;
+      }
+
+      & p:last-of-type {
+        color: grey;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 560px) {
+ .BtCategory{ 
+  margin-top: 0.5rem;
+  & button{
+   
+    padding: 0.8rem;
+    border-radius: 2px;
+
+  }
+}
 }

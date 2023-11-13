@@ -80,7 +80,7 @@
 
 
 
- @media screen and (max-width:620px) {
+ @media screen and (max-width:650px) {
     .navbar{ 
 
         & .usuario{
@@ -100,7 +100,23 @@
 }
 
 
-    @media screen and (max-width: 570px) {
+    @media screen and (max-width: 560px) {
+
+        .pesquisa-mobile{
+            background-color: transparent;
+            border: none;
+            display: flex;
+            
+            border-radius: 10px;
+
+            & :first-child{
+                display: flex;
+                align-items: center;
+                color: white;
+                font-size: 1.4rem             ;
+                
+            }
+        }
        
 
         & .navbar{ 

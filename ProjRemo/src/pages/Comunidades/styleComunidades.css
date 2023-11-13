@@ -1,9 +1,17 @@
+.Comunidade{
+    & h1{
+        color: green;
+    }
+}
+
+
+
 .AllComunidades {
     margin-top: 5rem;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end; 
-    gap: 30%;
+    justify-content: space-between; 
+    gap: 3%;
 }
 
 .AddComunidades{
@@ -24,13 +32,13 @@
 
 
     & input:first-of-type {
-        width: 20rem;
+        width: 10rem;
         background-color: rgb(173, 173, 173);
         border: none;
     }
     & input:last-of-type {
         border: none;
-        width: 20rem;
+        width: 10rem;
         height: 7rem;
         justify-self: start;
         background-color: rgb(173, 173, 173);
@@ -52,7 +60,7 @@
     justify-content: flex-start;
     background-color: rgb(211, 211, 211);
     margin-right: 0;
-    width: 10%;
+    width: 10rem;
 
 
     & p{

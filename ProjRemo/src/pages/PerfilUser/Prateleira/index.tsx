@@ -1,127 +1,126 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import "./styleprateleira.css"
+import "./styleprateleira.css";
+import testeimgfilme from "./testeimgfilme.jpeg";
 
 export function Prateleira() {
-  const [filmesVistos, setFilmesVistos] = useState([
-    { id: 1, nome: 'Filme 1', avaliacao: 4 },
-    { id: 2, nome: 'Filme 2', avaliacao: 3 },
-    // Outros filmes vistos
-  ]);
 
-  const [filmesFila, setFilmesFila] = useState([
-    { id: 1, nome: 'Filme A', avaliacao: 0 },
-    { id: 2, nome: 'Filme B', avaliacao: 0 },
-    // Outros filmes em fila
-  ]);
+  const ImgTeste = testeimgfilme;
 
-  const [filmesPausa, setFilmesPausa] = useState([
-    { id: 1, nome: 'Filme X', avaliacao: 0 },
-    { id: 2, nome: 'Filme Y', avaliacao: 0 },
-    // Outros filmes em pausa
-  ]);
+  const [activeCategory, setActiveCategory] = useState<'vistos' | 'fila' | 'pausa'>('vistos');
 
-  // Estado para rastrear o novo filme
-  const [novoFilme, setNovoFilme] = useState({
-    nome: '',
-    categoria: 'vistos',
-    avaliacao: 0,
-  });
-
-  const adicionarFilme = () => {
-    if (novoFilme.nome) {
-      switch (novoFilme.categoria) {
-        case 'vistos':
-          setFilmesVistos([...filmesVistos, { id: filmesVistos.length + 1, ...novoFilme }]);
-          break;
-        case 'fila':
-          setFilmesFila([...filmesFila, { id: filmesFila.length + 1, ...novoFilme }]);
-          break;
-        case 'pausa':
-          setFilmesPausa([...filmesPausa, { id: filmesPausa.length + 1, ...novoFilme }]);
-          break;
-        default:
-          break;
-      }
-      // Limpe o estado do novo filme
-      setNovoFilme({
-        nome: '',
-        categoria: 'vistos',
-        avaliacao: 0,
-      });
+  const renderFilmes = () => {
+    switch (activeCategory) {
+      case 'vistos':
+        return filmesVistos;
+      case 'fila':
+        return filmesFila;
+      case 'pausa':
+        return filmesPausa;
+      default:
+        return [];
     }
   };
+
+  const [filmesVistos] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: {} }>>([
+    { id: 1, nome: 'Fi1', avaliacao: 4, img: ImgTeste },
+    { id: 2, nome: 'Fi2', avaliacao: 5, img: ImgTeste },
+    { id: 3, nome: 'Fi3', avaliacao: 5, img: ImgTeste },
+    { id: 4, nome: 'Fi4', avaliacao: 1, img: ImgTeste },
+  ]);
+
+  const [filmesFila] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: {} }>>([
+    { id: 1, nome: 'Filme A', avaliacao: 0, img: ImgTeste },
+  ]);
+
+  const [filmesPausa] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: {} }>>([
+    { id: 1, nome: 'Filme X', avaliacao: 0, img: ImgTeste },
+  ]);
 
   return (
     <div className="Prateleira">
       <h2>Minha Prateleira</h2>
-      
-      <h3>Adicionar Filme à Prateleira</h3>
-      <div className='AddPrateleira'>
-        <input
-          type="text"
-          placeholder="Nome do Filme"
-          value={novoFilme.nome}
-          onChange={(e) => setNovoFilme({ ...novoFilme, nome: e.target.value })}
-        />
-        <select
-          value={novoFilme.categoria}
-          onChange={(e) => setNovoFilme({ ...novoFilme, categoria: e.target.value })}
-        >
-          <option value="vistos">Vistos</option>
-          <option value="fila">Em Fila</option>
-          <option value="pausa">Em Pausa</option>
-        </select>
-        {novoFilme.categoria === 'vistos' && (
-          <>
-            <label>Avaliação: </label>
-            <input
-              type="number"
-              min="0"
-              max="5"
-              value={novoFilme.avaliacao}
-              onChange={(e) =>
-                setNovoFilme({ ...novoFilme, avaliacao: parseInt(e.target.value) })
-              }
-            />
-          </>
-        )}
-        <button onClick={adicionarFilme}>Adicionar Filme</button>
+
+      <div className='BtCategory'>
+        <button onClick={() => setActiveCategory('vistos')}>Vistos</button>
+        <button onClick={() => setActiveCategory('fila')}>Na Fila</button>
+        <button onClick={() => setActiveCategory('pausa')}>Pausa</button>
       </div>
 
-      {/* Exibir todas as seções de prateleira, independentemente da avaliação */}
-      <div>
-        <h3>Vistos</h3>
-        <ul>
-          {filmesVistos.map((filme) => (
-            <li key={filme.id}>
-              {filme.nome} (Avaliação: {filme.avaliacao} estrelas)
-            </li>
-          ))}
-        </ul>
+      <div className='Listas'>
+        <div className='Filmes'>
+          <h3>{activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)}</h3>
+          <ul>
+            {renderFilmes().map((filme) => (
+              <li key={filme.id}>
+                <p>{filme.nome}</p>
+                {filme.img && <img src={filme.img as string} alt={filme.nome} />}
+                {activeCategory === 'vistos' && <p>Avaliação: {filme.avaliacao}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div>
-        <h3>Em Fila</h3>
-        <ul>
-          {filmesFila.map((filme) => (
-            <li key={filme.id}>
-              {filme.nome}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h3>Em Pausa</h3>
-        <ul>
-          {filmesPausa.map((filme) => (
-            <li key={filme.id}>
-              {filme.nome} 
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <Link to="/perfil">Voltar para o Perfil</Link>
     </div>
   );
 }
+
+
+
+
+//API-------------------------------------------------------------
+
+/* 
+import { useState, useEffect } from 'react';
+import "./styleprateleira.css";
+
+export function Prateleira() {
+  const [filmes, setFilmes] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: string }>>([]);
+  const [categoriaAtiva, setCategoriaAtiva] = useState<'vistos' | 'fila' | 'pausa'>('vistos');
+  const [posicoesCarrossel, setPosicoesCarrossel] = useState({
+    vistos: 0,
+    fila: 0,
+    pausa: 0,
+  });
+
+  useEffect(() => {
+    // Buscar filmes da API
+    const buscarFilmes = async () => {
+      try {
+        const resposta = await fetch('seu_endpoint_da_api_aqui');
+        const dados = await resposta.json();
+        setFilmes(dados);
+      } catch (erro) {
+        console.error('Erro ao buscar filmes:', erro);
+      }
+    };
+
+    buscarFilmes();
+  }, []);
+
+  // O restante do seu componente permanece o mesmo...
+
+  return (
+    <div className="Prateleira">
+      <div className='Listas'>
+        <div>
+          <h3>{categoriaAtiva.charAt(0).toUpperCase() + categoriaAtiva.slice(1)}</h3>
+          <ul>
+            {filmes
+              .slice(posicoesCarrossel[categoriaAtiva], posicoesCarrossel[categoriaAtiva] + postsPerPage)
+              .map((filme) => (
+                <li key={filme.id}>
+                  {filme.img && <img src={filme.img} alt={filme.nome} />}
+                  <p>{filme.nome}</p>
+                  {categoriaAtiva === 'vistos' && <p>Avaliação: {filme.avaliacao} estrelas</p>}
+                </li>
+              ))}
+          </ul>
+          <div className='BtCarrossel'>
+            <button onClick={prevSlide}>&lt;</button>
+            <button onClick={nextSlide}>&gt;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+} */
