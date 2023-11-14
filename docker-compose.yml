@@ -1,11 +1,23 @@
 services:
-  db:
+  postgres:
     image: postgres:latest
     volumes:
-      - /Documents/postgres/remo/:/var/lib/postgresql/data
+      - /home/kairon/Documents/postgres/remo/:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=remo
-      - POSTGRES_USER=remo
-      - POSTGRES_PASSWORD=1234
+      POSTGRES_DB: remo
+      POSTGRES_USER: remo
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_HOST: remo
     ports:
       - '5432:5432'
+  keycloak:
+    image: jboss/keycloak:latest
+    volumes:
+      - /home/kairon/Documents/keycloak/data:/opt/jboss/keycloak/data
+    environment:
+      DB_VENDOR: h2
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: Pa55w0rd
+      JAVA_OPTS_APPEND: "-Dkeycloak.profile=preview"
+    ports:
+      - '8090:8080'

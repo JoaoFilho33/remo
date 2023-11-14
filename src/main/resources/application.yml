@@ -16,3 +16,22 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:8090/realms/remo
+            jwk-set-uri: http://localhost:8090/realms/remo/protocol/openid-connect/certs
+        client:
+          registration:
+            keycloak:
+              realm: remo
+              client-id: login-app
+              authorization-grant-type: authorization_code
+              scope: openid,offline_access,profile
+              client-secret: PEjwGKT58fqbNs5gSS0PUj93MV4B0xq8
+          provider:
+            keycloak:
+              issuer-uri: http://localhost:8090/realms/remo
+              user-name-attribute: preferred_username
