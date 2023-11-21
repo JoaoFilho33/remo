@@ -15,14 +15,18 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/participante")
 public class ParticipanteController {
     @Autowired
     private ParticipanteService participanteService;
 
-    @GetMapping
+    @GetMapping("/participante")
     public ResponseEntity<List<Participante>> getParticipantes() {
         return ResponseEntity.ok((List<Participante>) participanteService.getAllParticipantes());
+    }
+
+    @GetMapping("/comunidade/{idComunidade}/participante")
+    public ResponseEntity<List<Participante>> getParticipantesByComunidade(@PathVariable(value = "idComunidade") Long idComunidade) {
+        return ResponseEntity.ok((List<Participante>) participanteService.getAllParticipantesByComunidadeId(idComunidade));
     }
 
     @GetMapping("/{id}")
@@ -38,12 +42,12 @@ public class ParticipanteController {
         return ResponseEntity.ok().body(participante);
     }
 
-    @PostMapping
+    @PostMapping("/participante")
     public Participante saveParticipante(@Validated @RequestBody Participante participante) {
         return participanteService.createParticipante(participante);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/participante/{id}")
     public ResponseEntity<Participante> putParticipante(@Validated @PathVariable(value = "id") Long id, @RequestBody Participante participante) {
         Participante newParticipante = participanteService.updateParticipante(id, participante);
         if(newParticipante == null) {
@@ -55,7 +59,7 @@ public class ParticipanteController {
         return ResponseEntity.ok().body(newParticipante);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/participante/{id}")
     public Participante deleteParticipante(@PathVariable(value = "id") Long id) {
         Participante byeParticipante = participanteService.removeParticipante(id);
         if(byeParticipante == null) {
