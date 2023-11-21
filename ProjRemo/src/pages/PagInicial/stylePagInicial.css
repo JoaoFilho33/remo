@@ -1,49 +1,167 @@
-.WikisPopulares {
-/*     background-color: rgb(226, 226, 226);
- */    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-   
-    flex-wrap: wrap;
-    
-
-
-    & .WikiPopular {
-        background-color: rgb(189, 180, 180);
-        display: flex;
-        margin: 0;
-    }
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
 }
 
-.WikiStyle {
+.carousel-container {
+    position: relative;
+    height: 100%;
+}
+
+.slick-slider {
+    height: 100%;
+}
+
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.feed-popular-films {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 6px auto;
+    overflow: hidden;
+    padding-top: .8rem;
+}
+
+.feed-header {
+    display: flex;
+    background: url("../../img/salaVaziaVerde.jpg");
+    height: 100%;
+}
+
+.list-feed {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 6px auto;
+    border-radius: 18px;
+    overflow: hidden;
+    padding-top: .8rem;
+    /* background: url("https://static.wikia.nocookie.net/1e17bced-251e-4c43-b3ac-ed39ee07cb94"),rgba(6, 110, 6, 0.7); */
+    background: linear-gradient(to right, rgb(10, 119, 19), rgba(255, 0, 0, 0));
+    box-shadow:  3px 3px 4px rgba(10, 10, 10, 0.7);
+}
+
+.list-feed__item-container {
+    flex: 1 1 calc(33.33% - 24px);
+    margin: 12px;
+    max-width: 200px;
+}
+
+.list-feed__item {
     display: flex;
     flex-direction: column;
-     max-width:14rem; 
+    height: 100%;
+}
 
-    & a {
-        text-decoration: none;
-    }
+/* .list-feed__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    max-height: 200px;
+} */
 
-    .GoToPerfil {
-        color: #6d6b6b;
-        font-size: smaller;
-        margin: 0;
-        margin-bottom: 0;
-    }
+.list-feed__image-container {
+    max-height: 200px; 
+}
 
-    & h3 {
-        margin: 0;
-        margin-left: 1px;
-        text-decoration: none;
-        color: black;
-        background-color: #00A310;
-        margin-bottom: 0;
-        padding: 0.2rem;
-    }
 
-    & .BtLikeDislike{
-        display: flex;
-        align-self: flex-end;
-    }
+.list-feed__sinopse-container {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    margin-top: auto;
+    background-color: rgb(4, 73, 33);
+    height: 7rem;
+}
 
+.list-feed__sinopse {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22.5px;
+    margin: 0;
+}
+
+.alice-carousel__stage-item {
+    display: inline-block;
+    position: relative;
+    margin-top: -1vh;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: -1rem;
+    overflow: hidden;
+    max-width: 50%%;
+}
+
+.alice-carousel__stage-item img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.alice-carousel__stage-item:hover img {
+    transform: scale(1.1); 
+    width: 100%;
+    object-fit: contain;
+}
+
+.alice-carousel__wrapper {
+    display: flex;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
 }

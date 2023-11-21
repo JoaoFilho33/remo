@@ -7,6 +7,7 @@ import { Prateleira } from "./pages/PerfilUser/Prateleira"
 import { Wikis } from "./pages/Comunidades/Wikis"
 import { Comunidade } from "./pages/Comunidades/Comunidade"
 import { Comunidades } from "./pages/Comunidades"
+import { Filme } from "./pages/PagInicial/filmesCartaz"
 
 
 export function RoutesApp(){
@@ -25,6 +26,7 @@ export function RoutesApp(){
                 <Route path="/Wiki/:id" element={<Wikis/>}/>
                 <Route path="/Perfil/Comunidade/:id" element={<Comunidade/>}/>
                 <Route path="/Perfil/Comunidade/" element={<Comunidades/>}/>
+                <Route path="/filmesCartaz/:id" element={ <Filme/> }/> 
 
          </Routes>
        
