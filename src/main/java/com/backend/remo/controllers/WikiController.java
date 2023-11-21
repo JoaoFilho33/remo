@@ -12,19 +12,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/wiki")
 public class WikiController {
     @Autowired
     private WikiService wikiService;
 
-    @GetMapping
+    @GetMapping("/wiki")
     public ResponseEntity<List<Wiki>> getWikis(){
         return ResponseEntity.ok((List<Wiki>) wikiService.getAllWikis());
     }
 
-    @PostMapping
-    public Wiki postWiki(@Validated @RequestBody Wiki wiki){
-        return wikiService.createWiki(wiki  );
+    @GetMapping("/usuario/{id}/wiki")
+    public ResponseEntity<List<Wiki>> getWikisByUser(@PathVariable("id") Long id){
+        return ResponseEntity.ok((List<Wiki>) wikiService.getAllWikisByUsuario(id));
+    }
+    @GetMapping("/comunidade/{idComunidade}/wiki")
+    public ResponseEntity<List<Wiki>> getWikisByComunidade(@PathVariable("idComunidade") Long idComunidade){
+        return ResponseEntity.ok((List<Wiki>) wikiService.getAllWikisByComunidade(idComunidade));
+    }
+
+    @GetMapping("/comunidade/{idComunidade}/participante/{idParticipante}/wiki")
+    public ResponseEntity<List<Wiki>> getWikisOfParticipanteByComunidade(@PathVariable("idComunidade") Long idComunidade, @PathVariable("idParticipante") Long idParticipante){
+        return ResponseEntity.ok((List<Wiki>) wikiService.getWikisOfParticipanteByComunidade(idComunidade, idParticipante));
+    }
+
+    @PostMapping("/comunidade/wiki")
+    public Wiki postWiki( @Validated @RequestBody Wiki wiki) {
+        return wikiService.createWiki(wiki);
     }
 
 }

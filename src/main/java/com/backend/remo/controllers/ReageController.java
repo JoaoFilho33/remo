@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reage")
+@RequestMapping("/wiki/reage")
 public class ReageController {
     @Autowired
     private ReageService reageService;
