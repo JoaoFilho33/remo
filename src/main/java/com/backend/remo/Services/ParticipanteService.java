@@ -22,6 +22,9 @@ public class ParticipanteService {
         return participanteRepository.findById(id).orElse(null);
     }
 
+    public List<Participante> getAllParticipantesByComunidadeId(Long id) {
+        return participanteRepository.getAllParticipanteByComunidadeId(id);
+    }
     public Participante createParticipante(Participante participante) {
         return participanteRepository.save(participante);
     }

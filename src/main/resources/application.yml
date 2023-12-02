@@ -2,14 +2,14 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/remo
-    username: remo
+    username: postgres
     password: 1234
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
       jdbc.lob.non_contextual_creation: true
-    gerenate-ddl: true
+    generate-ddl: true
     show-sql: true
     properties:
       hibernate:

@@ -29,6 +29,10 @@ public class Wiki {
     @JoinColumn(name = "id_participante", nullable = false)
     private Participante participante;
 
+    /*@OneToMany
+    @JoinColumn(name = "id_comunidade", nullable = false)
+    private Comunidade idComunidade;*/
+
     @JsonIgnore
     @OneToMany(mappedBy = "wiki")
     private List<Reage> reages;

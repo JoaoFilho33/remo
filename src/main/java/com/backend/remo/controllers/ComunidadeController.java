@@ -13,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/comunidade")
+@CrossOrigin(origins = "http://localhost:5173")  //aqui eu add a origem do meu front
+
 public class ComunidadeController {
     @Autowired
     private ComunidadeService comunidadeService;
@@ -63,5 +65,8 @@ public class ComunidadeController {
 
         return byeComunidade;
     }
+
+
+
 
 }

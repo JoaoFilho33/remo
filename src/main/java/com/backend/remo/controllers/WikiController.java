@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:5173")  //aqui eu add a origem do meu front
 
 @RestController
 @RequestMapping("/wiki")
@@ -19,12 +20,26 @@ public class WikiController {
 
     @GetMapping
     public ResponseEntity<List<Wiki>> getWikis(){
-        return ResponseEntity.ok((List<Wiki>) wikiService.getAllWikis());
+        return ResponseEntity.ok(wikiService.getAllWikis());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Wiki> getWikiById(@PathVariable Long id) {
+        Wiki wiki = wikiService.getWikiById(id);
+        if (wiki != null) {
+            return ResponseEntity.ok(wiki);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
     public Wiki postWiki(@Validated @RequestBody Wiki wiki){
-        return wikiService.createWiki(wiki  );
+        return wikiService.createWiki(wiki);
     }
 
+    @PostMapping("/comunidade/wiki")
+    public Wiki postComunidadeWiki(@Validated @RequestBody Wiki wiki) {
+        return wikiService.createWiki(wiki);
+    }
 }
