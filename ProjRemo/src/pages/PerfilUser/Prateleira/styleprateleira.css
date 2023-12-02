@@ -47,6 +47,7 @@
   margin-top: 1.5rem;
   justify-content: center;
   gap: 0.7rem;
+  white-space: nowrap;
   
   & button{
     box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);

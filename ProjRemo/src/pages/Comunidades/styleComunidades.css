@@ -1,24 +1,184 @@
 .Comunidade{
+    display: flex;
+    flex-direction: column;
+
     & h1{
         color: green;
+    }
+
+
+    & .AllComunidades{
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+        background-color: rgb(245, 246, 245);
+        padding: 1rem 0;
+        
+
+
+        & .AddComunidades{
+            display: flex;
+            align-items:flex-start;
+            flex-direction: column;
+            justify-content: start;
+            margin-bottom: 1rem;
+            
+            & button{
+                border-radius: 4px;
+                background-color: green;
+                border: none;
+                color: white;
+                margin-bottom: 1rem;
+                
+            }
+
+            & .Cadastro{
+                border-radius: 2px;
+                padding: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: rgb(48, 180, 18);
+                box-shadow: -1px 0.5px 0.5rem rgb(181, 181, 181);
+
+                & input{
+                   margin-top: 0.2rem;
+                }
+
+                & input::placeholder{                    
+                        color: rgb(3, 112, 10);;
+                    
+                }
+
+                & .TipoConteudo, .Subcategorias{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0.4rem;
+                    color: white;
+                    align-items: center;
+                }
+
+               
+            }
+        }
+    }
+
+    & .ListaComunidades {
+        display: flex;
+        flex-direction: column;
+    
+        & h3 {
+            color: green;
+        }
+    
+        & p {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(226, 222, 222);
+            padding: 0.4rem;
+            margin: 0; 
+            margin-bottom: 0.3rem; 
+            
+            & a {
+                text-decoration: none;
+                color: rgb(30, 108, 6);
+            }
+        }
+    }
+    
+}
+
+.SemComunidades{
+    margin: 0.5rem;
+    & span{
+        color: gray;
+    }
+}
+
+
+@media screen and (min-width: 560px) {
+    .ListaComunidades{
+        & p {
+            width: 80%;
+
+        }
+    }
+    
+}
+
+@media screen and (min-width: 940px) {
+    .Comunidade {
+        justify-content: center;
+        align-items: center;
+        
+        
+      & .AllComunidades{
+        align-items: center;
+        justify-content: center;
+        padding: 0.4rem 1rem;
+        box-shadow: -1px 0.5px 0.5rem rgb(182, 181, 181);
+
+      }
+       
+    }
+    .ListaComunidades{
+        padding: 0 2rem ;
+        & p {
+            width: 18rem;
+
+        }
     }
 }
 
 
 
-.AllComunidades {
-    margin-top: 5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-    gap: 3%;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .Comunidade{
+    & h1{
+        color: green;
+    }
+    & .AllComunidades {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3%;
+
+        & .AddComunidades{
+            background-color: rgb(238, 238, 238);
+            align-self: center
+        
+        }
+    }
 }
 
-.AddComunidades{
-    background-color: rgb(238, 238, 238);
-    align-self: center
 
-}
+
+
 
 .AddComunidades .Cadastro {
   
@@ -82,3 +242,4 @@
     }
 }
 
+ */

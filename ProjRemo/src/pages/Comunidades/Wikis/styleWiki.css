@@ -1,4 +1,6 @@
 .TextWiki{
+   margin-top: 1rem;
+   background-color: rgb(252, 252, 252);
     display: flex;
     flex-direction: column;
     & h1 {
@@ -10,11 +12,19 @@
 
          
          & a{
+            box-shadow: -1px 0.5px 0.5rem rgb(182, 181, 181);
+
             color: white;
             text-decoration: none;
             padding: 10px;
             background-color: rgb(181, 181, 181);
             border-radius: 20px;
+         }
+
+         & a:hover{
+            background-color: rgb(165, 165, 165);
+            transition: 50ms;
+
          }
 
         

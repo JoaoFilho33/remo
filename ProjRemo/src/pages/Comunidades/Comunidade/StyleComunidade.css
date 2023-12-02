@@ -1,19 +1,32 @@
+.ComunidadeContainer{
+    & h2, h3{
+        color: rgb(38, 150, 7);
+    }
+}
+
+.ComunidadeeADD{
+    display: flex;
+    flex-direction: column;
+
+}
+
 .WikiComunidade{
+    
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    
+
     & .WikiInComunidade{
-        background-color: rgb(189, 180, 180);
-    display: flex;
-    flex-direction: column;
-    max-width: 20%;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        max-width: 12rem;
 
 
     & h3{
         margin-top: 0;
-        color: #ffffff;
-        background-color:  #00A310;;
+        color: #299907;
     }
     
     & p:last-of-type{
@@ -27,16 +40,69 @@
         padding: 2%;
         color: white;
         background-color:  #00A310;
-        border-radius: 20px;
+        border-radius: 15px;
         border: none;
         margin-bottom: 0.7rem;
         margin-right: 0.4rem;
     }
+
+    & a{
+        font-size: small;
+        align-self: self-end;
+        color: #0b4800;
+    }
 }
 
+
+}
+.SpaceADDWikis{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    & a{
+       
+            padding: 0.4rem  2rem;
+            color: white;
+            border-radius: 2px;
+            border: none;
+            background-color: #299907;
+            margin-bottom: 4rem;
+        
+    }
+    
+
+}
+@media screen and (min-width:600px) {
+    .SpaceADDWikis{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: flex-end;
+        & a{
+           
+                padding: 0.4rem  2rem;
+                color: white;
+                border-radius: 2px;
+                border: none;
+                background-color: #299907;
+                margin-bottom: 4rem;
+            
+        }
+    }
+
+   .ComunidadeeADD{
+        justify-content: space-between;
+        flex-direction: row;
+        margin-left: 1rem;
+    
+
+        & .SpaceADDWikis{
+            display: flex;
+            align-items: self-start;
+        }
+    }
 }
 
-.AddWiki{
+/* .AddWiki{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,4 +136,48 @@
   color: rgb(255, 255, 255);
 }
 
-}
+} */
+
+
+/* .SpaceADDWikis{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    background-color: #e0e0e0;
+    
+    & h3{
+        color: #005809;
+    }
+
+
+    & input{
+        background-color: #00A310;
+        width: 19rem;
+        align-self: center;
+        color: white;
+        padding: 0.4rem;
+        
+    }
+
+    & textarea{
+        align-self: center;
+        background-color: rgb(198, 198, 198);
+        height: 5rem;
+        width: 90%;
+        margin: 5px;
+        margin-bottom:1.4rem;
+        
+        
+    }
+    & button{
+        background-color: #00A310;
+             align-self: self-end;
+             border: none;
+             padding: 8px;
+
+    }
+    & input::placeholder,
+    textarea::placeholder {
+  color: rgb(255, 255, 255);
+} */
+
