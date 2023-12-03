@@ -39,6 +39,12 @@ public class ParticipanteController {
         return ResponseEntity.ok().body(participante);
     }
 
+    @GetMapping("/comunidade/{comunidadeId}")
+    public ResponseEntity<List<Participante>> getParticipantesByComunidadeId(@PathVariable Long comunidadeId) {
+        List<Participante> participantes = participanteService.getAllParticipantesByComunidadeId(comunidadeId);
+        return ResponseEntity.ok(participantes);
+    }
+
     @PostMapping
     public Participante saveParticipante(@Validated @RequestBody Participante participante) {
         return participanteService.createParticipante(participante);

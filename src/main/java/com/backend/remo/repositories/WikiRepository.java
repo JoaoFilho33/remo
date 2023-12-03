@@ -11,22 +11,29 @@ import java.util.List;
 @Repository
 public interface WikiRepository extends JpaRepository<Wiki, Long> {
 
-    @Query(value = "select w.* from wiki w \n" +
-            "inner join participante p \n" +
-            "on w.id_participante = p.id\n" +
-            "inner join comunidade c \n" +
-            "on p.id_comunidade = c.id \n" +
-            "where c.id = :id", nativeQuery = true)
-    public List<Wiki> getAllWikisByComunidade(@Param("id") Long id);
+    @Query("SELECT w FROM Wiki w WHERE w.participante.id = :idParticipante")
+    List<Wiki> getWikisByParticipant(@Param("idParticipante") Long idParticipante);
 
-    @Query(value = "select w.* from wiki w \n" +
-            "inner join participante p \n" +
-            "on w.id_participante = p.id\n" +
-            "inner join comunidade c \n" +
-            "on p.id_comunidade = c.id \n" +
-            "where c.id = :cid and p.id = :pid", nativeQuery = true)
-    public List<Wiki> getWikisOfParticipanteByComunidade(@Param("cid") Long cid,
-                                                         @Param("pid") Long pid);
+    @Query("SELECT w FROM Wiki w WHERE w.comunidade.id = :idComunidade")
+    List<Wiki> getAllWikisByComunidade(@Param("idComunidade") Long idComunidade);
+
+
+//    @Query(value = "select w.* from wiki w \n" +
+//            "inner join participante p \n" +
+//            "on w.id_participante = p.id\n" +
+//            "inner join comunidade c \n" +
+//            "on p.id_comunidade = c.id \n" +
+//            "where c.id = :id", nativeQuery = true)
+//    public List<Wiki> getAllWikisByComunidade(@Param("id") Long id);
+
+//    @Query(value = "select w.* from wiki w \n" +
+//            "inner join participante p \n" +
+//            "on w.id_participante = p.id\n" +
+//            "inner join comunidade c \n" +
+//            "on p.id_comunidade = c.id \n" +
+//            "where c.id = :cid and p.id = :pid", nativeQuery = true)
+//    public List<Wiki> getWikisOfParticipanteByComunidade(@Param("cid") Long cid,
+//                                                         @Param("pid") Long pid);
 
     @Query(value = "select w.* from wiki w \n" +
             "inner join participante p \n" +

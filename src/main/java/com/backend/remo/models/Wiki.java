@@ -33,6 +33,10 @@ public class Wiki {
     @JoinColumn(name = "id_comunidade", nullable = false)
     private Comunidade idComunidade;*/
 
+    @ManyToOne
+    @JoinColumn(name = "comunidade_id")
+    private Comunidade comunidade;
+
     @JsonIgnore
     @OneToMany(mappedBy = "wiki")
     private List<Reage> reages;

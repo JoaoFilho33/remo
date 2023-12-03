@@ -33,13 +33,26 @@ public class WikiController {
         }
     }
 
-    @PostMapping
-    public Wiki postWiki(@Validated @RequestBody Wiki wiki){
-        return wikiService.createWiki(wiki);
+    @GetMapping("/participante/{idParticipante}")
+    public ResponseEntity<List<Wiki>> getWikisByParticipant(@PathVariable Long idParticipante) {
+        List<Wiki> wikis = wikiService.getWikisByParticipant(idParticipante);
+        return ResponseEntity.ok(wikis);
     }
+
+    @GetMapping("/comunidade/{idComunidade}")
+    public ResponseEntity<List<Wiki>> getWikisByComunidade(@PathVariable Long idComunidade) {
+        List<Wiki> wikis = wikiService.getAllWikisByComunidade(idComunidade);
+        return ResponseEntity.ok(wikis);
+    }
+
+//    @PostMapping
+//    public Wiki postWiki(@Validated @RequestBody Wiki wiki){
+//        return wikiService.createWiki(wiki);
+//    }
 
     @PostMapping("/comunidade/wiki")
     public Wiki postComunidadeWiki(@Validated @RequestBody Wiki wiki) {
         return wikiService.createWiki(wiki);
     }
+
 }
