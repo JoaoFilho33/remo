@@ -1,6 +1,8 @@
 package com.backend.remo.Services;
 
 import com.backend.remo.models.Comunidade;
+import com.backend.remo.models.Participante;
+import com.backend.remo.models.Usuario;
 import com.backend.remo.repositories.ComunidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.Optional;
 public class ComunidadeService {
     @Autowired
     private ComunidadeRepository comunidadeRepository;
+    @Autowired
+    private ParticipanteService participanteService;
 
     public List<Comunidade> getAllComunidades() {
         return comunidadeRepository.findAll();
@@ -22,8 +26,20 @@ public class ComunidadeService {
     }
 
 
+//    public Comunidade createComunidade(Comunidade comunidade) {
+//        return comunidadeRepository.save(comunidade);
+//    }
+
     public Comunidade createComunidade(Comunidade comunidade) {
-        return comunidadeRepository.save(comunidade);
+        comunidadeRepository.save(comunidade);
+        Usuario usuarioCriador = comunidade.getUsuario();
+        Participante participanteCriador = Participante.builder()
+                .comunidade(comunidade)
+                .dataIngresso(comunidade.getDataCriacao())
+                .usuario(usuarioCriador)
+                .build();
+        participanteService.createParticipante(participanteCriador);
+        return comunidade;
     }
 
     public Comunidade updateComunidade(Long id, Comunidade comunidade) {
