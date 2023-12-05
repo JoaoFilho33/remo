@@ -147,7 +147,7 @@ export function PagInicial() {
   };
 
   return (
-    <div>
+    <div className="HomePage">
       <div>
         <div className="feed-header">
           <div className="list-feed">
