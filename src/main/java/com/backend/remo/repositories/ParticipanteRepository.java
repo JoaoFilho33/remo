@@ -1,7 +1,6 @@
 package com.backend.remo.repositories;
 
 import com.backend.remo.models.Participante;
-import jakarta.servlet.http.Part;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

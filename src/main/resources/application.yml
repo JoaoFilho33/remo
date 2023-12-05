@@ -9,29 +9,28 @@ spring:
     hibernate:
       ddl-auto: update
       jdbc.lob.non_contextual_creation: true
-    gerenate-ddl: true
+    generate-ddl: true
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: POSTGRESQL
   security:
     security:
       oauth2:
         resourceserver:
           jwt:
-            issuer-uri: http://localhost:8090/realms/remo
-            jwk-set-uri: http://localhost:8090/realms/remo/protocol/openid-connect/certs
-        client:
-          registration:
-            keycloak:
-              realm: remo
-              client-id: login-app
-              authorization-grant-type: authorization_code
-              scope: openid,offline_access,profile
-              client-secret: PEjwGKT58fqbNs5gSS0PUj93MV4B0xq8
-          provider:
-            keycloak:
-              issuer-uri: http://localhost:8090/realms/remo
-              user-name-attribute: preferred_username
+            issuer-uri: http://localhost:8090/auth/realms/remo
+            jwk-set-uri: ${spring.security.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+#        client:
+#          registration:
+#            keycloak:
+#              realm: remo
+#              client-id: remo
+#              authorization-grant-type: authorization_code
+#              scope: openid,offline_access,profile
+##              client-secret: PEjwGKT58fqbNs5gSS0PUj93MV4B0xq8
+#          provider:
+#            keycloak:
+#              issuer-uri: http://localhost:8090/auth/realms/remo
+#              user-name-attribute: preferred_username

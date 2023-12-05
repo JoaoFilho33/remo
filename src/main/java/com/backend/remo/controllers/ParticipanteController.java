@@ -1,10 +1,7 @@
 package com.backend.remo.controllers;
 
 import com.backend.remo.Services.ParticipanteService;
-import com.backend.remo.models.Comunidade;
 import com.backend.remo.models.Participante;
-import com.backend.remo.models.Usuario;
-import jakarta.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
