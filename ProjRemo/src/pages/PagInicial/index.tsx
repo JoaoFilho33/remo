@@ -1,8 +1,8 @@
+// PagInicial.tsx
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
-import AliceCarousel, { OnSlideChangedEventHandler } from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
+import Carousel from "./carrossel/carrossel"; // Altere o caminho conforme necessário
 import "./stylePagInicial.css";
 
 interface Filme {
@@ -17,45 +17,12 @@ interface CustomAliceCarouselProps {
   mouseTracking: boolean;
   disableButtonsControls: boolean;
   slideToIndex: number;
-  onSlideChanged: OnSlideChangedEventHandler;
+  onSlideChanged: (item: number) => void;
   infinite: boolean;
   autoPlay: boolean;
   autoPlayInterval: number;
   disableDotsControls: boolean;
-  renderPrevButton?: ({ isDisabled }: { isDisabled: boolean | undefined }) => React.ReactNode;
-  renderNextButton?: ({ isDisabled }: { isDisabled: boolean | undefined }) => React.ReactNode;
 }
-
-interface FeedProps {
-  title: string;
-  filmes: Filme[];
-  customCarouselProps: CustomAliceCarouselProps;
-  handleMudancaSlide: (item: number) => void;
-}
-
-const FeedCarousel: React.FC<FeedProps> = ({ title, filmes, customCarouselProps, handleMudancaSlide }) => {
-  return (
-    <div className="feed-popular-films">
-      <h2>{title}</h2>
-      <AliceCarousel {...customCarouselProps} >
-        {filmes.map((filme) => (
-          <Link to={`/filmesCartaz/${filme.id}`} key={filme.id} className="list-feed__item-container">
-            <div className="list-feed__item">
-              <div className="list-feed__image-wrapper">
-                <div className="list-feed__image-container">
-                  <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.title} />
-                </div>
-              </div>
-              <div className="list-feed__sinopse-container">
-                <p className="list-feed__sinopse">{filme.overview.slice(0, 100)}...</p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </AliceCarousel>
-    </div>
-  );
-};
 
 export function PagInicial() {
   const [filmesEmExibicao, setFilmesEmExibicao] = useState<Filme[]>([]);
@@ -66,9 +33,9 @@ export function PagInicial() {
   const [indiceAtualProximosLancamentos, setIndiceAtualProximosLancamentos] = useState<number>(0);
 
   useEffect(() => {
-    async function carregarFilmes(categoria: string, setFilmes: React.Dispatch<React.SetStateAction<Filme[]>>) {
+    async function carregarFilmesEmExibicao() {
       try {
-        const resposta = await api.get(`movie/${categoria}`, {
+        const resposta = await api.get("movie/now_playing", {
           params: {
             api_key: "6dbc3d5fef3a8a2a7f319cfb155da5b0",
             language: "pt-BR",
@@ -76,15 +43,47 @@ export function PagInicial() {
           },
         });
 
-        setFilmes(resposta.data.results.slice(0, 10));
+        setFilmesEmExibicao(resposta.data.results.slice(0, 13));
       } catch (erro) {
-        console.error(`Erro ao buscar filmes ${categoria}:`, erro);
+        console.error("Erro ao buscar filmes em exibição:", erro);
       }
     }
 
-    carregarFilmes("now_playing", setFilmesEmExibicao);
-    carregarFilmes("top_rated", setFilmesPopulares);
-    carregarFilmes("upcoming", setProximosLancamentos);
+    async function carregarMelhoresAvaliados() {
+      try {
+        const resposta = await api.get("movie/top_rated", {
+          params: {
+            api_key: "6dbc3d5fef3a8a2a7f319cfb155da5b0",
+            language: "pt-BR",
+            page: 1,
+          },
+        });
+
+        setFilmesPopulares(resposta.data.results.slice(0, 20));
+      } catch (erro) {
+        console.error("Erro ao buscar filmes populares:", erro);
+      }
+    }
+
+    async function carregarProximosLancamentos() {
+      try {
+        const resposta = await api.get("movie/upcoming", {
+          params: {
+            api_key: "6dbc3d5fef3a8a2a7f319cfb155da5b0",
+            language: "pt-BR",
+            page: 1,
+          },
+        });
+
+        setProximosLancamentos(resposta.data.results.slice(0, 10));
+      } catch (erro) {
+        console.error("Erro ao buscar próximos lançamentos:", erro);
+      }
+    }
+
+    carregarFilmesEmExibicao();
+    carregarMelhoresAvaliados();
+    carregarProximosLancamentos();
   }, []);
 
   const handleMudancaSlideEmExibicao = (item: number) => {
@@ -100,7 +99,11 @@ export function PagInicial() {
   };
 
   const customCarouselPropsEmExibicao: CustomAliceCarouselProps = {
-    responsive: { 0: { items: 1 }, 600: { items: 3 }, 1024: { items: 4 } },
+    responsive: {
+      0: { items: 1 },
+      600: { items: 3 },
+      1024: { items: 4 },
+    },
     mouseTracking: true,
     disableButtonsControls: false,
     disableDotsControls: true,
@@ -109,27 +112,14 @@ export function PagInicial() {
     infinite: true,
     autoPlay: false,
     autoPlayInterval: 300,
-
-    renderPrevButton: ({ isDisabled }: { isDisabled?: boolean }) => (
-      <button
-        className={`custom-arrow prev ${isDisabled ? "disabled" : ""}`}
-        onClick={() => handleMudancaSlideEmExibicao(indiceAtualEmExibicao - 1)}
-      >
-        &#9664;
-      </button>
-    ),
-    renderNextButton: ({ isDisabled }: { isDisabled?: boolean }) => (
-      <button
-        className={`custom-arrow next ${isDisabled ? "disabled" : ""}`}
-        onClick={() => handleMudancaSlideEmExibicao(indiceAtualEmExibicao + 1)}
-      >
-        &#9654;
-      </button>
-    ),
   };
 
   const customCarouselPropsPopulares: CustomAliceCarouselProps = {
-    responsive: { 0: { items: 1 }, 600: { items: 3 }, 1024: { items: 4 } },
+    responsive: {
+      0: { items: 1 },
+      600: { items: 3 },
+      1024: { items: 6 },
+    },
     mouseTracking: true,
     disableButtonsControls: false,
     disableDotsControls: true,
@@ -138,76 +128,56 @@ export function PagInicial() {
     infinite: true,
     autoPlay: false,
     autoPlayInterval: 300,
-
-    renderPrevButton: ({ isDisabled }: { isDisabled?: boolean }) => (
-      <button
-        className={`custom-arrow prev ${isDisabled ? "disabled" : ""}`}
-        onClick={() => handleMudancaSlidePopulares(indiceAtualMelhoresAvaliados - 1)}
-      >
-        &#9664;
-      </button>
-    ),
-    renderNextButton: ({ isDisabled }: { isDisabled?: boolean }) => (
-      <button
-        className={`custom-arrow next ${isDisabled ? "disabled" : ""}`}
-        onClick={() => handleMudancaSlidePopulares(indiceAtualMelhoresAvaliados + 1)}
-      >
-        &#9654;
-      </button>
-    ),
   };
 
   const customCarouselPropsProximos: CustomAliceCarouselProps = {
-    responsive: { 0: { items: 1 }, 600: { items: 3 }, 1024: { items: 4 } },
+    responsive: {
+      0: { items: 1 },
+      600: { items: 3 },
+      1024: { items: 4 },
+    },
     mouseTracking: true,
     disableButtonsControls: false,
     disableDotsControls: true,
-    slideToIndex: indiceAtualMelhoresAvaliados,
+    slideToIndex: indiceAtualProximosLancamentos,
     onSlideChanged: handleMudancaSlideProximosLancamentos,
     infinite: true,
     autoPlay: false,
     autoPlayInterval: 300,
-
-    renderPrevButton: ({ isDisabled }: { isDisabled?: boolean }) => (
-      <button
-        className={`custom-arrow prev ${isDisabled ? "disabled" : ""}`}
-        onClick={() => handleMudancaSlideProximosLancamentos(indiceAtualProximosLancamentos - 1)}
-      >
-        &#9664;
-      </button>
-    ),
-    renderNextButton: ({ isDisabled }: { isDisabled?: boolean }) => (
-      <button
-        className={`custom-arrow next ${isDisabled ? "disabled" : ""}`}
-        onClick={() => handleMudancaSlideProximosLancamentos(indiceAtualProximosLancamentos + 1)}
-      >
-        &#9654;
-      </button>
-    ),
   };
 
   return (
     <div>
-      <FeedCarousel
-        title="Filmes em Exibição"
-        filmes={filmesEmExibicao}
-        customCarouselProps={customCarouselPropsEmExibicao}
-        handleMudancaSlide={handleMudancaSlideEmExibicao}
-      />
+      <div>
+        <div className="feed-header">
+          <div className="list-feed">
+            <h2>Filmes em Exibição</h2>
+            <Carousel
+              items={filmesEmExibicao}
+              customProps={customCarouselPropsEmExibicao}
+              linkTo={(filme) => `/filmesCartaz/${filme.id}`}
+            />
+          </div>
+        </div>
+      </div>
 
-      <FeedCarousel
-        title="Melhores Avaliados"
-        filmes={filmesPopulares}
-        customCarouselProps={customCarouselPropsPopulares}
-        handleMudancaSlide={handleMudancaSlidePopulares}
-      />
+      <div className="feed-popular-films">
+        <h2>Melhores avaliados</h2>
+        <Carousel
+          items={filmesPopulares}
+          customProps={customCarouselPropsPopulares}
+          linkTo={(filme) => `/filmesCartaz/${filme.id}`}
+        />
+      </div>
 
-      <FeedCarousel
-        title="Próximos Lançamentos"
-        filmes={proximosLancamentos}
-        customCarouselProps={customCarouselPropsProximos}
-        handleMudancaSlide={handleMudancaSlideProximosLancamentos}
-      />
+      <div className="feed-popular-films">
+        <h2>Próximos Lançamentos</h2>
+        <Carousel
+          items={proximosLancamentos}
+          customProps={customCarouselPropsProximos}
+          linkTo={(filme) => `/filmesCartaz/${filme.id}`}
+        />
+      </div>
     </div>
   );
 }
