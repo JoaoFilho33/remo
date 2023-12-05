@@ -1,29 +1,29 @@
-package com.backend.remo.models;
+    package com.backend.remo.models;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+    import jakarta.persistence.*;
+    import lombok.AllArgsConstructor;
+    import lombok.Builder;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
-@Entity
-public class PrateleiraFilme {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Data @NoArgsConstructor @AllArgsConstructor @Builder
+    @Entity
+    public class PrateleiraFilme {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    @Column(name = "status_filme")
-    private String statusFilme;
+        @Column(name = "status_filme")
+        private String statusFilme;
 
-    @Column(name = "estrelas")
-    private Double estrelas;
+        @Column(name = "estrelas")
+        private Double estrelas;
 
-    @ManyToOne
-    @JoinColumn(name = "filme_id")
-    private Filme filme;
+        @ManyToOne
+        @JoinColumn(name = "filme_id")
+        private Filme filme;
 
-    @ManyToOne
-    @JoinColumn(name = "prateleira_id")
-    private Prateleira prateleira;
-}
+        @ManyToOne
+        @JoinColumn(name = "prateleira_id")
+        private Prateleira prateleira;
+    }

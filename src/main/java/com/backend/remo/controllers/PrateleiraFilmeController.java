@@ -12,9 +12,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/prateleiraFilme")
+@RequestMapping("/prateleiraFilme/**")
 public class PrateleiraFilmeController  {
     @Autowired
     private PrateleiraFilmeService prateleiraFilmeService;
