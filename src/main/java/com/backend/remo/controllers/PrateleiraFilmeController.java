@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/prateleiraFilme")
+@RequestMapping("/prateleiraFilme/**")
 public class PrateleiraFilmeController  {
     @Autowired
     private PrateleiraFilmeService prateleiraFilmeService;

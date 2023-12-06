@@ -1,7 +1,6 @@
 package com.backend.remo.Services;
 
 import com.backend.remo.models.Participante;
-import com.backend.remo.models.Usuario;
 import com.backend.remo.repositories.ParticipanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

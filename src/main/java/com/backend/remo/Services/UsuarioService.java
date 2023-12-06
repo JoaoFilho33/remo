@@ -1,7 +1,6 @@
 package com.backend.remo.Services;
 
-import com.backend.remo.models.Comunidade;
-import com.backend.remo.models.Usuario;
+import com.backend.remo.models.usuario.Usuario;
 import com.backend.remo.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

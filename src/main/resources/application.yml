@@ -2,7 +2,7 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/remo
-    username: postgres
+    username: remo
     password: 1234
     driver-class-name: org.postgresql.Driver
   jpa:

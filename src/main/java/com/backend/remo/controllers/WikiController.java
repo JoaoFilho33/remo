@@ -2,7 +2,6 @@ package com.backend.remo.controllers;
 
 
 import com.backend.remo.Services.WikiService;
-import com.backend.remo.models.Usuario;
 import com.backend.remo.models.Wiki;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
