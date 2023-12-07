@@ -1,14 +1,16 @@
 FROM maven:latest as build
 
-COPY . .
+WORKDIR /app
 
-RUN mvn clean install
+COPY . /app
 
-FROM openjdk:17
+RUN mvn package
+
+FROM openjdk:17-ea-17-jdk
 
 WORKDIR /app
 
-COPY  /target/remo-0.0.1-SNAPSHOT.jar /app
+COPY --from=build /app/target/remo-0.0.1-SNAPSHOT.jar /app
 
 EXPOSE 8080
 
