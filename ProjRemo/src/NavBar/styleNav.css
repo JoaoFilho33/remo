@@ -2,7 +2,7 @@
 
 .navbar{   
     align-items: center;
-    background-color: #8BD87F ;
+    background-color: #00831aae ;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,8 +17,6 @@
     flex-direction: row;
     gap: 0.2rem;
     
-
-
     & input:first-child  {
         background-color: #FFFFFF;
         border-radius: 10px 0 0 10px;

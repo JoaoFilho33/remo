@@ -30,7 +30,7 @@ export const ProxLancamentos: React.FC = () => {
   return (
     <div>
         <h2>Próximos Lançamentos</h2>
-        <LayoutFilms items={todosOsFilmes} linkTo={(filme) => `/filmesCartaz/${filme.id}`} />
+        <LayoutFilms items={todosOsFilmes} linkTo={(filme) => `/filmeExibicao/${filme.id}`} />
       </div>
   );
 };

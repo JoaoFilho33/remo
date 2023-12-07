@@ -7,7 +7,6 @@
     padding-top: .8rem;
     /* background: url("https://static.wikia.nocookie.net/1e17bced-251e-4c43-b3ac-ed39ee07cb94"),rgba(6, 110, 6, 0.7); */
     /* background: linear-gradient(to right, rgb(10, 119, 19), rgba(255, 0, 0, 0)); */
-    background: green;
 
     & .feed-header {
         display: flex;
@@ -21,7 +20,7 @@
         align-items: center;
         padding: 12px;
         margin-top: auto;
-        background-color: rgb(4, 73, 33);
+        background-color: rgb(5, 134, 74);
         height: 3.5rem;
     }
 

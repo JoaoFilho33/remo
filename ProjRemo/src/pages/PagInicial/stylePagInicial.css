@@ -40,7 +40,8 @@
     & .feed-header {
         display: flex;
         flex-direction: column;
-        background-color: rgba(13, 112, 13, 0.596);
+        /* background-color: rgba(13, 112, 13, 0.596); */
+        background: radial-gradient(circle, #fcfcfc, #88e988);
         height: 100%;
     }
 

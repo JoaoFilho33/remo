@@ -2,16 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 18px;
+    margin-top: .2rem;
     max-width: 100%;
-    padding: 0 8px;
     flex-direction: column;
 
     & .filme-header {
         display: flex;
         justify-content: center;
         flex-wrap: nowrap;
-        background-color: rgba(0, 131, 109, 0.658);
+        background-color: #077101ae;
 
         & .header_wrapper {
             display: flex;
@@ -104,51 +103,40 @@
             display: flex;
             gap: 2rem;
             margin-left: 2rem;
-            background-color: aqua;
-        }
-
-        & .elenco-titulo h2 {
-            margin-left: 1rem;
         }
 
         & .people-elenco {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: blueviolet;
+
+            margin-left: 2rem;
+
+            overflow-x: auto;
+            gap: 2rem;
 
             & .people-card {
-                background-color: red;
+                display: flex;
+                flex-direction: column;
                 margin-right: 1rem;
                 width: 100%;
-                height: 100%;
+                border-start-start-radius: 10px;
+                box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
 
                 .people-name {
                     display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 2.5rem;
+                    
                 }
 
                 .people-name p {
-                    display: flex;
-
-                    justify-content: center;
+                    margin: 1rem;
                 }
 
             }
         }
-    }
-
-
-
-    & .people-elenco ul {
-        display: flex;
-        overflow-x: auto;
-        gap: 2rem;
-    }
-
-    & .people-elenco li {
-        width: 100%;
-        height: 100%;
-        border: 1px solid #ccc;
     }
 
     & .people-elenco img {
@@ -162,23 +150,25 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin-left: 2rem;
 
         & .diretor-titulo {
             display: flex;
             gap: 2rem;
-            margin-left: 2rem;
-            background-color: aqua;
-        }
-
-        & .diretor-titulo h2 {
             margin-left: 1rem;
         }
 
         & .diretor-card {
-            background-color: red;
             width: 100%;
             height: 100%;
             margin-left: 1rem;
+        }
+
+        & .diretor-card img {
+            width: 7%;
+            height: 100%;
+            border-start-start-radius: 10px;
+            object-fit: cover;
         }
     }
 

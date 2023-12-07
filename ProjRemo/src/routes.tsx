@@ -10,7 +10,7 @@ import { Comunidades } from "./pages/Comunidades"
 import { Filme } from "./pages/PagInicial/pageFilmeExibicao"
 import { MelhoresAvaliados } from "./pages/PagInicial/pageMelhoresAvaliados"
 import { ProxLancamentos } from "./pages/PagInicial/pageProxLancamentos"
-
+import Cadastro from "./pages/PagLogin"
 
 export function RoutesApp(){
     return(
@@ -22,6 +22,7 @@ export function RoutesApp(){
           
             <Routes>
                 <Route path="/" element={<PagInicial/>}/>
+                <Route path="/login" element={<Cadastro/>}/>
                 <Route path="/Pesquisar" element={<Pesquisar/>}/>
                 <Route path="/Perfil" element={<PerfilUser/>}/>
                 <Route path="/Perfil/Prateleira/:id" element={<Prateleira/>}/>

@@ -4,6 +4,7 @@
     padding-top: .8rem;
     flex-direction: column;
     align-items: center;
+    background: radial-gradient(circle, #fcfcfc, #c9f7c9);
 
     & .timeline-item_conteiner {
         align-items: stretch;

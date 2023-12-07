@@ -118,22 +118,20 @@ export function Filme() {
           <h2>Elenco Principal</h2>
         </div>
         <div className='people-elenco'>
-          <ul>
-            {filme.cast &&
-              filme.cast.map((person: Person) => (
-                <li key={person.id} className='people-card'>
-                  {person.profile_path && (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
-                      alt={person.name}
-                    />
-                  )}
-                  <div className='people-name'>
-                    <p>{person.name}</p>
-                  </div>
-                </li>
-              ))}
-          </ul>
+          {filme.cast &&
+            filme.cast.map((person: Person) => (
+              <div key={person.id} className='people-card'>
+                {person.profile_path && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
+                    alt={person.name}
+                  />
+                )}
+                <div className='people-name'>
+                  <p>{person.name}</p>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
 
@@ -143,12 +141,15 @@ export function Filme() {
           <h2>Diretor</h2>
         </div>
         <div className='diretor-card'>
-          {filme.director?.profile_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w185${filme.director?.profile_path}`}
-              alt={filme.director?.name}
-            />
-          )}
+          <div className='diretor-image'>
+
+            {filme.director?.profile_path && (
+              <img
+                src={`https://image.tmdb.org/t/p/w185${filme.director?.profile_path}`}
+                alt={filme.director?.name}
+              />
+            )}
+          </div>
           <div className='diretor-name'>
             <p>{filme.director?.name}</p>
           </div>
