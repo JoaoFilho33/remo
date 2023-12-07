@@ -1,9 +1,13 @@
+FROM maven:3-amazoncorretto-17 as build
+
+COPY . .
+
+RUN mvn clean package
+
 FROM openjdk:17
 
-WORKDIR /app
-
-COPY ./target/remo-0.0.1-SNAPSHOT.jar /app
+COPY --from=build /target/remo-0.0.1-SNAPSHOT.jar remo.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "remo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "remo.jar"]
