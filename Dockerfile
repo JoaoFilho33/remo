@@ -2,7 +2,7 @@ FROM maven:3-amazoncorretto-17 as build
 
 COPY . .
 
-RUN mvn clean package
+RUN mvn clean install
 
 FROM openjdk:17
 
