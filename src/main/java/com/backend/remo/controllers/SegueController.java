@@ -14,6 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/segue")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class SegueController {
     @Autowired
     private SegueService segueService;

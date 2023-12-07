@@ -34,7 +34,7 @@ public class Wiki {
     private Comunidade idComunidade;*/
 
     @ManyToOne
-    @JoinColumn(name = "comunidade_id")
+    @JoinColumn(name = "comunidade_id", nullable = false)
     private Comunidade comunidade;
 
     @JsonIgnore

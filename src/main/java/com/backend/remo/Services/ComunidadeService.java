@@ -34,7 +34,7 @@ public class ComunidadeService {
     public Comunidade createComunidade(Comunidade comunidade) {
         comunidadeRepository.save(comunidade);
         Usuario usuarioCriador = comunidade.getUsuario();
-        usuarioCriador.setRole(Role.ADMIN_COMUNIDADE);
+        usuarioCriador.setRole(Role.MANAGER);
         Participante participanteCriador = Participante.builder()
                 .comunidade(comunidade)
                 .dataIngresso(comunidade.getDataCriacao())

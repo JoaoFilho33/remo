@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:5173") // Permitir solicitações deste domínio
 
 @RestController
 @RequestMapping("/participante")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ParticipanteController {
     @Autowired
     private ParticipanteService participanteService;

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")  //aqui eu add a origem do meu front
-
 @RestController
 @RequestMapping("/wiki")
 public class WikiController {

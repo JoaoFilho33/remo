@@ -26,7 +26,7 @@ public class Usuario implements UserDetails {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Column(name = "senha", nullable = false)
@@ -41,7 +41,7 @@ public class Usuario implements UserDetails {
     @Column(name = "foto")
     private String foto;
 
-    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @JsonIgnore
@@ -60,47 +60,56 @@ public class Usuario implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seguido")
     private List<Segue> seguido;
 
+    @Transient
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == Role.ADMIN.ADMIN) {
+        if(role == Role.ADMIN) {
             return List.of(new SimpleGrantedAuthority(
-                    "ROLE_ADMIN"),
+                            "ROLE_ADMIN"),
                     new SimpleGrantedAuthority("ROLE_USER"),
-            new SimpleGrantedAuthority("ROLE_ADMIN_COMUNIDADE"));
-        }else if(this.role == Role.ADMIN_COMUNIDADE){
+                    new SimpleGrantedAuthority("ROLE_MANAGER"));
+        }
+        if(role == Role.MANAGER){
             return List.of(new SimpleGrantedAuthority(
-                            "ROLE_ADMIN_COMUNIDADE"),
+                            "ROLE_MANAGER"),
                     new SimpleGrantedAuthority("ROLE_USER"));
         }
         else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
+    @Transient
+    @JsonIgnore
     @Override
     public String getPassword() {
         return senha;
     }
 
+    @Transient
     @Override
+    @JsonIgnore
     public String getUsername() {
         return email;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return true;
     }

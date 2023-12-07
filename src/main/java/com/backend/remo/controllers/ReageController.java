@@ -12,6 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/wiki/reage")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class ReageController {
     @Autowired
     private ReageService reageService;

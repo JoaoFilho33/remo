@@ -29,6 +29,7 @@ public class WikiService {
 //        return wikiRepository.getWikisOfParticipanteByComunidade(idComunidade, idParticipante);
 //    }
 
+
     public List<Wiki> getAllWikisByUsuario(Long idUsuario) {
         return wikiRepository.getAllWikisByUsuario(idUsuario);
     }

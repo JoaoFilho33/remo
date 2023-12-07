@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/filme")
+@CrossOrigin(origins = "http://localhost:5173")
 public class    FilmeController {
     @Autowired
     private FilmeService filmeService;
