@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
-import Carousel from "./carrossel/carrossel"; // Altere o caminho conforme necessário
+import ListFeed from "./listFeed";
+import FeedFilms from "./feedFilms";
 import "./stylePagInicial.css";
 
 interface Filme {
@@ -12,25 +13,10 @@ interface Filme {
   overview: string;
 }
 
-interface CustomAliceCarouselProps {
-  responsive: { [key: number]: { items: number } };
-  mouseTracking: boolean;
-  disableButtonsControls: boolean;
-  slideToIndex: number;
-  onSlideChanged: (item: number) => void;
-  infinite: boolean;
-  autoPlay: boolean;
-  autoPlayInterval: number;
-  disableDotsControls: boolean;
-}
-
 export function PagInicial() {
   const [filmesEmExibicao, setFilmesEmExibicao] = useState<Filme[]>([]);
   const [filmesPopulares, setFilmesPopulares] = useState<Filme[]>([]);
   const [proximosLancamentos, setProximosLancamentos] = useState<Filme[]>([]);
-  const [indiceAtualEmExibicao, setIndiceAtualEmExibicao] = useState<number>(0);
-  const [indiceAtualMelhoresAvaliados, setIndiceAtualMelhoresAvaliados] = useState<number>(0);
-  const [indiceAtualProximosLancamentos, setIndiceAtualProximosLancamentos] = useState<number>(0);
 
   useEffect(() => {
     async function carregarFilmesEmExibicao() {
@@ -86,98 +72,31 @@ export function PagInicial() {
     carregarProximosLancamentos();
   }, []);
 
-  const handleMudancaSlideEmExibicao = (item: number) => {
-    setIndiceAtualEmExibicao(item);
-  };
-
-  const handleMudancaSlidePopulares = (item: number) => {
-    setIndiceAtualMelhoresAvaliados(item);
-  };
-
-  const handleMudancaSlideProximosLancamentos = (item: number) => {
-    setIndiceAtualProximosLancamentos(item);
-  };
-
-  const customCarouselPropsEmExibicao: CustomAliceCarouselProps = {
-    responsive: {
-      0: { items: 1 },
-      600: { items: 3 },
-      1024: { items: 4 },
-    },
-    mouseTracking: true,
-    disableButtonsControls: false,
-    disableDotsControls: true,
-    slideToIndex: indiceAtualEmExibicao,
-    onSlideChanged: handleMudancaSlideEmExibicao,
-    infinite: true,
-    autoPlay: false,
-    autoPlayInterval: 300,
-  };
-
-  const customCarouselPropsPopulares: CustomAliceCarouselProps = {
-    responsive: {
-      0: { items: 1 },
-      600: { items: 3 },
-      1024: { items: 6 },
-    },
-    mouseTracking: true,
-    disableButtonsControls: false,
-    disableDotsControls: true,
-    slideToIndex: indiceAtualMelhoresAvaliados,
-    onSlideChanged: handleMudancaSlidePopulares,
-    infinite: true,
-    autoPlay: false,
-    autoPlayInterval: 300,
-  };
-
-  const customCarouselPropsProximos: CustomAliceCarouselProps = {
-    responsive: {
-      0: { items: 1 },
-      600: { items: 3 },
-      1024: { items: 4 },
-    },
-    mouseTracking: true,
-    disableButtonsControls: false,
-    disableDotsControls: true,
-    slideToIndex: indiceAtualProximosLancamentos,
-    onSlideChanged: handleMudancaSlideProximosLancamentos,
-    infinite: true,
-    autoPlay: false,
-    autoPlayInterval: 300,
-  };
-
   return (
     <div className="HomePage">
-      <div>
-        <div className="feed-header">
-          <div className="list-feed">
-            <h2>Filmes em Exibição</h2>
-            <Carousel
-              items={filmesEmExibicao}
-              customProps={customCarouselPropsEmExibicao}
-              linkTo={(filme) => `/filmesCartaz/${filme.id}`}
-            />
-          </div>
+      <div className="feed-header">
+        <ListFeed items={filmesEmExibicao} linkTo={(filme) => `/filmeExibicao/${filme.id}`} />
+      </div>
+
+      <div className="feed_films">
+        <div className="feed-section_heading">
+          <h2>Melhores avaliados</h2>
+          <Link to="/melhores-avaliados" className="ver-tudo-link">
+            Ver Tudo &#9662;
+          </Link>
         </div>
+        <FeedFilms items={filmesPopulares} linkTo={(filme) => `/filmeExibicao/${filme.id}`} />
       </div>
 
-      <div className="feed-popular-films">
-        <h2>Melhores avaliados</h2>
-        <Carousel
-          items={filmesPopulares}
-          customProps={customCarouselPropsPopulares}
-          linkTo={(filme) => `/filmesCartaz/${filme.id}`}
-        />
+      <div className="feed_films">
+        <div className="feed-section_heading">
+          <h2>Próximos Lançamentos</h2>
+          <Link to="/proximos-lancamentos" className="ver-tudo-link">
+            Ver Tudo &#9662;
+          </Link>
+        </div>
+        <FeedFilms items={proximosLancamentos} linkTo={(filme) => `/filmeExibicao/${filme.id}`} />
       </div>
-
-      <div className="feed-popular-films">
-        <h2>Próximos Lançamentos</h2>
-        <Carousel
-          items={proximosLancamentos}
-          customProps={customCarouselPropsProximos}
-          linkTo={(filme) => `/filmesCartaz/${filme.id}`}
-        />
-      </div>
-    </div>
+    </div >
   );
 }

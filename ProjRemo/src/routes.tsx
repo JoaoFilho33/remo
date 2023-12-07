@@ -7,7 +7,9 @@ import { Prateleira } from "./pages/PerfilUser/Prateleira"
 import { Wikis } from "./pages/Comunidades/Wikis"
 import { Comunidade } from "./pages/Comunidades/Comunidade"
 import { Comunidades } from "./pages/Comunidades"
-import { Filme } from "./pages/PagInicial/filmesCartaz"
+import { Filme } from "./pages/PagInicial/pageFilmeExibicao"
+import { MelhoresAvaliados } from "./pages/PagInicial/pageMelhoresAvaliados"
+import { ProxLancamentos } from "./pages/PagInicial/pageProxLancamentos"
 
 
 export function RoutesApp(){
@@ -26,7 +28,9 @@ export function RoutesApp(){
                 <Route path="/Wiki/:id" element={<Wikis/>}/>
                 <Route path="/Perfil/Comunidade/:id" element={<Comunidade/>}/>
                 <Route path="/Perfil/Comunidade/" element={<Comunidades/>}/>
-                <Route path="/filmesCartaz/:id" element={ <Filme/> }/> 
+                <Route path="/filmeExibicao/:id" element={ <Filme/> }/> 
+                <Route path="/melhores-avaliados" element={<MelhoresAvaliados />} />
+                <Route path="/proximos-lancamentos" element={<ProxLancamentos />} />
 
          </Routes>
        
