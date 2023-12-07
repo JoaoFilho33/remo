@@ -2,10 +2,10 @@ FROM openjdk:17
 
 WORKDIR /app
 
-COPY * app/
+COPY ./target/remo-0.0.1-SNAPSHOT.jar /app
 
 EXPOSE 8080
 
-CMD cd ./app
 
-CMD mvn spring-boot:run
+
+CMD ["java", "-jar", "remo-0.0.1-SNAPSHOT.jar"]
