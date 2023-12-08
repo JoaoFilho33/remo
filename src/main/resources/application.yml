@@ -1,7 +1,7 @@
 ##  Database  ##
 spring:
   datasource:
-    url: jdbc:postgres://remo:HbBAs8cjJoPeqStbYAKj3BeoKVjcCsPV@dpg-clp4capoh6hc73bsokkg-a:5432/remo
+    url: jdbc:postgresql://dpg-clp4capoh6hc73bsokkg-a/remo
     username: remo
     password: HbBAs8cjJoPeqStbYAKj3BeoKVjcCsPV
     driver-class-name: org.postgresql.Driver
