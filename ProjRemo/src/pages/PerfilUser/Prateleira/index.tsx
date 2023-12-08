@@ -1,60 +1,100 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import "./styleprateleira.css";
-import testeimgfilme from "./testeimgfilme.jpeg";
 
-export function Prateleira() {
+interface Filme {
+  id: number;
+  nome: string;
+  ano: string;
+  tipo: string;
+  sinopse: string;
+}
 
-  const ImgTeste = testeimgfilme;
+interface PrateleiraFilme {
+  id: number;
+  statusFilme: string;
+  estrelas: number;
+  filme: Filme;
+  prateleira: {
+    id: number;
+    usuario: {
+    };
+  };
+}
 
-  const [activeCategory, setActiveCategory] = useState<'vistos' | 'fila' | 'pausa'>('vistos');
+const Prateleira: React.FC = () => {
+  const [filmes, setFilmes] = useState<PrateleiraFilme[]>([]);
+  const [filtroStatus, setFiltroStatus] = useState<string | null>(null);
 
-  const renderFilmes = () => {
-    switch (activeCategory) {
-      case 'vistos':
-        return filmesVistos;
-      case 'fila':
-        return filmesFila;
-      case 'pausa':
-        return filmesPausa;
-      default:
-        return [];
+  useEffect(() => {
+    fetchPrateleiraFilme();
+  }, []);
+
+  const fetchPrateleiraFilme = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/prateleiraFilme');
+      console.log('Dados da API:', response.data);
+      const filmesDoBanco = response.data;
+      const filmesPromises = filmesDoBanco.map(async (filmeBanco: PrateleiraFilme) => {
+        const filmeTMDb = await fetchFilmeTMDb(filmeBanco.filme.id);
+        return {
+          id: filmeBanco.id,
+          statusFilme: filmeBanco.statusFilme,
+          estrelas: filmeBanco.estrelas,
+          filme: {
+            nome: filmeTMDb.original_title,
+            imagem: filmeTMDb.poster_path,
+          },
+        };
+      });
+
+      const filmesComInformacoesTMDb = await Promise.all(filmesPromises);
+
+      setFilmes(filmesComInformacoesTMDb);
+    } catch (error) {
+      console.error('Erro ao buscar dados da prateleira de filmes', error);
     }
   };
 
-  const [filmesVistos] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: {} }>>([
-    { id: 1, nome: 'Fi1', avaliacao: 4, img: ImgTeste },
-    { id: 2, nome: 'Fi2', avaliacao: 5, img: ImgTeste },
-    { id: 3, nome: 'Fi3', avaliacao: 5, img: ImgTeste },
-    { id: 4, nome: 'Fi4', avaliacao: 1, img: ImgTeste },
-  ]);
+  const fetchFilmeTMDb = async (filmeId: number) => {
+    try {
+      const apiKey = '29c1fe0f8cc98e16d427a895f20d1fd9'; // Substitua pela sua chave de API TMDb
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${filmeId}?api_key=${apiKey}&language=pt-BR`);
+      return response.data;
+    } catch (error) {
+      console.error(`Erro ao buscar informações do filme ${filmeId} na API TMDb`, error);
+      return {};
+    }
+  };
 
-  const [filmesFila] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: {} }>>([
-    { id: 1, nome: 'Filme A', avaliacao: 0, img: ImgTeste },
-  ]);
+  const handleFiltroStatus = (status: string) => {
+    setFiltroStatus(status);
+  };
 
-  const [filmesPausa] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: {} }>>([
-    { id: 1, nome: 'Filme X', avaliacao: 0, img: ImgTeste },
-  ]);
+  const filmesFiltrados = filtroStatus
+    ? filmes.filter(filme => filme.statusFilme === filtroStatus)
+    : filmes;
 
   return (
     <div className="Prateleira">
       <h2>Minha Prateleira</h2>
-
-      <div className='BtCategory'>
-        <button onClick={() => setActiveCategory('vistos')}>Vistos</button>
-        <button onClick={() => setActiveCategory('fila')}>Na Fila</button>
-        <button onClick={() => setActiveCategory('pausa')}>Pausa</button>
+      <div className="Filtros">
+        <button onClick={() => handleFiltroStatus('fila')}>Fila</button>
+        <button onClick={() => handleFiltroStatus('vistos')}>Vistos</button>
+        <button onClick={() => handleFiltroStatus('pausa')}>Em Pausa</button>
       </div>
-
-      <div className='Listas'>
-        <div className='Filmes'>
-          <h3>{activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)}</h3>
+      <div className="Listas">
+        <div className="Filmes">
           <ul>
-            {renderFilmes().map((filme) => (
+            {filmesFiltrados.map((filme) => (
               <li key={filme.id}>
-                <p>{filme.nome}</p>
-                {filme.img && <img src={filme.img as string} alt={filme.nome} />}
-                {activeCategory === 'vistos' && <p>Avaliação: {filme.avaliacao}</p>}
+{/*                 <p>{filme.filme.nome}</p>
+ */}                <img
+                  src={`https://image.tmdb.org/t/p/w500/${filme.filme.imagem}`}
+                  alt={filme.filme.nome}
+                  />
+                  <p>Status: {filme.statusFilme}</p>
+                {filme.statusFilme === 'vistos' && <p>Avaliação: {filme.estrelas}</p>}
               </li>
             ))}
           </ul>
@@ -62,65 +102,6 @@ export function Prateleira() {
       </div>
     </div>
   );
-}
+};
 
-
-
-
-//API-------------------------------------------------------------
-
-/* 
-import { useState, useEffect } from 'react';
-import "./styleprateleira.css";
-
-export function Prateleira() {
-  const [filmes, setFilmes] = useState<Array<{ id: number; nome: string; avaliacao: number; img?: string }>>([]);
-  const [categoriaAtiva, setCategoriaAtiva] = useState<'vistos' | 'fila' | 'pausa'>('vistos');
-  const [posicoesCarrossel, setPosicoesCarrossel] = useState({
-    vistos: 0,
-    fila: 0,
-    pausa: 0,
-  });
-
-  useEffect(() => {
-    // Buscar filmes da API
-    const buscarFilmes = async () => {
-      try {
-        const resposta = await fetch('seu_endpoint_da_api_aqui');
-        const dados = await resposta.json();
-        setFilmes(dados);
-      } catch (erro) {
-        console.error('Erro ao buscar filmes:', erro);
-      }
-    };
-
-    buscarFilmes();
-  }, []);
-
-  // O restante do seu componente permanece o mesmo...
-
-  return (
-    <div className="Prateleira">
-      <div className='Listas'>
-        <div>
-          <h3>{categoriaAtiva.charAt(0).toUpperCase() + categoriaAtiva.slice(1)}</h3>
-          <ul>
-            {filmes
-              .slice(posicoesCarrossel[categoriaAtiva], posicoesCarrossel[categoriaAtiva] + postsPerPage)
-              .map((filme) => (
-                <li key={filme.id}>
-                  {filme.img && <img src={filme.img} alt={filme.nome} />}
-                  <p>{filme.nome}</p>
-                  {categoriaAtiva === 'vistos' && <p>Avaliação: {filme.avaliacao} estrelas</p>}
-                </li>
-              ))}
-          </ul>
-          <div className='BtCarrossel'>
-            <button onClick={prevSlide}>&lt;</button>
-            <button onClick={nextSlide}>&gt;</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-} */
+export default Prateleira;

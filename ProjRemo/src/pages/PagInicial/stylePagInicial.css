@@ -1,159 +1,77 @@
-/*  .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 14px;
+.HomePage {
+    & .feed-section_heading h2 {
+        /* background-color: hsl(120, 61%, 45%); */
+        background-color: rgba(13, 112, 13, 0.596);
+        border-top: 10px solid #520044;
+        color: #fff;
+        display: inline-block;
+        font-size: 24px;
+        margin: -10px 0 0;
+        padding: 10px 18px;
+        text-transform: uppercase;
+    }
+
+    & .feed-section_heading {
+        display: flex;
+        border-top: 10px solid #005207;
+        align-items: center;
+    }
+
+    & .feed-section_heading a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    & .ver-tudo-link  {
+        font-weight: bold;
+        color: #520044;
+    }
+
+    & .feed_films {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    & .feed-header {
+        display: flex;
+        flex-direction: column;
+        /* background-color: rgba(13, 112, 13, 0.596); */
+        background: radial-gradient(circle, #fcfcfc, #88e988);
+        height: 100%;
+    }
+
+    & .list-feed__item-container {
+        /* flex: 1 1 calc(33.33% - 24px); */
+        display: flex;
+        margin: 0.5rem;
+        max-width: 200px;
+    }
+
+    & .list-feed__item {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    & .list-feed__image-wrapper {
+        position: relative;
+        overflow: hidden;
+        max-height: 100%;
+    }
+
+    & .list-feed__image-container {
+        display: flex;
+        height: 100%;
+        max-width: 100%;
+        background-color: #520044;
+    }
+
+    & .list-feed__image-container img {
+        width: 100%;
+    }
 }
-
-.carousel-container {
-    position: relative;
-    height: 100%;
-}
-
-.slick-slider {
-    height: 100%;
-}
-
-.custom-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    cursor: pointer;
-    color: aliceblue;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.custom-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-.feed-popular-films {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 700px;
-    margin: 6px auto;
-    overflow: hidden;
-    padding-top: .8rem;
-}
-
-.feed-header {
-    display: flex;
-    background: url("../../img/salaVaziaVerde.jpg");
-    height: 100%;
-}
-
-.list-feed {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 900px;
-    margin: 6px auto;
-    border-radius: 18px;
-    overflow: hidden;
-    padding-top: .8rem;
-    background: linear-gradient(to right, rgb(10, 119, 19), rgba(255, 0, 0, 0));
-    box-shadow:  3px 3px 4px rgba(10, 10, 10, 0.7);
-}
-
-.list-feed__item-container {
-    flex: 1 1 calc(33.33% - 24px);
-    margin: 12px;
-    max-width: 200px;
-}
-
-.list-feed__item {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.list-feed__image-container {
-    max-height: 200px; 
-}
-
-
-.list-feed__sinopse-container {
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    margin-top: auto;
-    background-color: rgb(4, 73, 33);
-    height: 7rem;
-}
-
-.list-feed__sinopse {
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 22.5px;
-    margin: 0;
-}
-
-.alice-carousel__stage-item {
-    display: inline-block;
-    position: relative;
-    margin-top: -1vh;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: -1rem;
-    overflow: hidden;
-    max-width: 50%;
-}
-
-.alice-carousel__stage-item img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.alice-carousel__stage-item:hover img {
-    transform: scale(1.1); 
-    width: 100%;
-    object-fit: contain;
-}
-
-.alice-carousel__wrapper {
-    display: flex;
-}
-
-.prev,
-.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    cursor: pointer;
-    color: aliceblue;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}  */

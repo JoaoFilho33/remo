@@ -1,28 +1,26 @@
-/* styleCriarWiki.css */
 
-.AddNewWiki {
+.Novawiki {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Define a altura da div como 100% da altura da tela */
     
     & h2 {
         color: #006503;
-        margin-bottom: 2px; /* Espaçamento entre o h2 e o formulário */
+        margin-bottom: 2px; 
     }
-  
-    & .SpaceAddWiki {
-      height: 30%;
-      margin-top: 4rem;
+
+
+    & form{
+      border-radius: 2px;
       align-self: center;
-      background-color: rgb(255, 255, 255);
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 90%; 
-      max-width: 100%; 
-      text-align: center;
+      width: 60rem;
+      padding: 1rem;
+      background-color: rgb(241, 241, 241);
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      max-width: 80%;
     }
-  
+    
     & label {
     
       margin-bottom: 5px;
@@ -40,13 +38,16 @@
     }
   
     & textarea {
-      height: 40%;
+      height: 15rem;
     }
   
     & button {
-      background-color: #4caf50;
+      display: flex;
+      align-self: flex-end;
+      justify-self: center;
+      background-color: #004102;
       color: white;
-      padding: 10px;
+      padding: 15px 50px;
       border: none;
       border-radius: 5px;
       cursor: pointer;

@@ -1,63 +1,88 @@
-import  { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './styleCriarWiki.css';
 
-interface NovaWiki {
-  titulo: string;
+interface WikiFormData {
   conteudo: string;
-  
+  tema: string;
+  titulo: string;
+  participante: { id: number };
+  comunidade: { id: number };
 }
 
-export function CriarWiki() {
-  const { id } = useParams(); // Obtenha o ID da comunidade da URL
+const CriarWiki: React.FC = () => {
   const navigate = useNavigate();
+  const { id: idComunidade } = useParams<{ id: string }>();
 
-  const [novoWiki, setNovoWiki] = useState<NovaWiki>({ titulo: '', conteudo: '' });
+  const [wikiData, setWikiData] = useState<WikiFormData>({
+    conteudo: '',
+    tema: '',
+    titulo: '',
+    participante: { id: 1 },
+    comunidade: { id: Number(idComunidade) },
+  });
 
-  const adicionarWiki = async () => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setWikiData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     try {
-      // Verifique se os campos estão preenchidos
-      if (!novoWiki.titulo || !novoWiki.conteudo) {
-        console.error('Por favor, preencha todos os campos da Wiki.');
-        return;
-      }
+      const response = await axios.post(
+        'http://localhost:8080/wiki/comunidade/wiki',
+        wikiData
+      );
 
-      // Adicione a nova wiki ao backend
-      await axios.post(`http://localhost:8080/wiki`, {
-        ...novoWiki,
-        participante: { id: Number(id) }, // Certifique-se de ajustar a estrutura de dados conforme necessário
+      toast.success('Wiki criada com sucesso!', {
+        onClose: () => navigate(`/Comunidade/${idComunidade}`),
       });
-
-      // Navegue de volta à comunidade após adicionar a wiki
-      navigate(`/Perfil/Comunidade/${id}`);
     } catch (error) {
-      console.error('Erro ao adicionar Wiki:', error);
+      console.error('Erro ao criar Wiki:', error);
+      toast.error('Erro ao criar Wiki. Tente novamente.');
     }
   };
 
   return (
-    <div className="AddNewWiki">
-      <h2>Criar Nova Wiki para a Comunidade {id}</h2>
-      <div className="SpaceAddWiki">
-        <label>Título da Wiki:</label>
-        <input
-          type="text"
-          placeholder="Título da Wiki"
-          value={novoWiki.titulo}
-          onChange={(e) => setNovoWiki({ ...novoWiki, titulo: e.target.value })}
-        />
-
-        <label>Conteúdo da Wiki:</label>
-        <textarea
-          placeholder="Conteúdo da Wiki"
-          value={novoWiki.conteudo}
-          onChange={(e) => setNovoWiki({ ...novoWiki, conteudo: e.target.value })}
-        />
-
-        <button onClick={adicionarWiki}>Adicionar Wiki</button>
-      </div>
+    <div className="Novawiki">
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Título:</label>
+          <input
+            type="text"
+            name="titulo"
+            value={wikiData.titulo}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Tema:</label>
+          <input
+            type="text"
+            name="tema"
+            value={wikiData.tema}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Conteúdo:</label>
+          <textarea
+            name="conteudo"
+            value={wikiData.conteudo}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit">Criar Wiki</button>
+      </form>
     </div>
   );
-}
+};
 
+export default CriarWiki;

@@ -1,0 +1,62 @@
+.PesquisarFilmesdiv{
+
+    & h1{
+        color: rgb(3, 86, 3);
+    }
+
+    & .BarraPesquisa{
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 1rem;
+        
+        & input, button{
+            border: none;
+            padding: 15px;
+        }
+        
+        & input{
+            background-color: #FFFFFF;
+            border-radius: 10px 0 0 10px;
+            padding:  0.5rem;
+            border: none;
+            box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
+            text-decoration:none
+        }
+
+        & button{
+            background-color: #227216;
+            border-radius: 0 10px 10px 0;
+             color: white;
+            border: none;
+            box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
+        }
+    }
+
+    .Pesquisar{
+        & h2{
+            margin-top: 1rem;
+            color: #116b03;
+        }
+        & ul{
+            display: flex;
+            flex-direction: column;
+            & li{
+                display: flex;
+                flex-direction: column;
+                & h3{
+                    color: rgb(1, 87, 1);
+                }
+                & .imgConteudo{
+                    border-radius: 2px;
+                    background-color: #ebebeb;
+                    gap: 0.7rem;
+                    display:flex;
+                    max-width: 50rem;
+                    & img{
+                        max-width: 100px;
+                    }
+                }
+            }
+        }
+    }
+}

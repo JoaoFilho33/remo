@@ -1,14 +1,37 @@
 .ContainerPerfil {
+  height: 100vh;
     display: flex;
     flex-direction: column;
+    background: radial-gradient(circle, #fcfcfc, #cbfccb); /* Cores de exemplo, ajuste conforme necessário */
+
 
     & h2{
-      color:#006c0b;
+      margin-bottom: 0;
+      display: flex;
+     width: 15rem;
+      justify-self: flex-start;
+      color:#fafefb;
+      padding: 1rem;
+      background-color: #00620a;
+      border-radius: 0px 10px 10px 0;
     }
     
+    .detalhe{
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+
+    .linhah2{
+      width: 90vw;
+      height:5px;
+      background-color: #00A310;
+    }
+     
 
     & .PostagemContainer {
-      width: 100%; /* Ajuste isso para a largura desejada */
+      width: 100%; 
       overflow: hidden;
       white-space: nowrap;
       display: flex;
@@ -19,78 +42,7 @@
       }
       
 
-      & .ControlesCarrossel{
-        display: flex;
-        justify-content: center;
-        gap: 4px;
-        margin-top: 0.4rem;
-        
-        
-        & button{
-          background-color: #00A310;
-          border: none;
-          box-shadow: -1px 0.5px 0.5rem rgb(131, 131, 131);
-          color: white;
-          transition: background-color 0.3s;
-
-        }
-        & button:hover{
-          background-color:#034309;
-          
-
-        }
-      }
-
-   
-
-
-      & .Postagem {
-        padding: 0.4rem;
-        background-color: rgb(205, 205, 205);
-        border-radius: 5px;
-        text-align: center;
-        width: 10rem;
-        height: 6rem;
-        justify-content: space-between;
-        gap: 0.1rem;
-        margin-right: 1rem; /* Espaçamento entre as postagens */
-        display: inline-block; /* Para garantir que as postagens fiquem em linha */
-      
-        & p:first-of-type {
-          margin-top: 0;
-          margin-bottom: 1rem;
-          align-self: start;
-          flex-wrap: wrap;
-          white-space: normal;
-          font-size: smaller;
-          color: rgb(55, 55, 55);
-        }
-      
-        & p:last-of-type {margin-bottom: 10rem;
-          display: flex;
-          flex-direction: row-reverse;
-          margin: 0;
-          margin-top:0.5rem;
-          align-self: flex-end;
-          font-size: small;
-          color: #333;
-        }
-
-        & span{
-          display: flex;
-          color: #9b9999;
-          flex-direction: row-reverse;
-          font-size: smaller;
-          align-self: flex-end;
-        }
-
-        & button{
-          margin-top: 0.8rem;
-        }
-
-      
     
-      }
 
     & .GroupWikis {
         display: flex;
@@ -153,9 +105,8 @@
        }
     }
 
-
-
-
+    
+  
     .AddPostagem{
         justify-content: space-between;
         border-radius: 10px;
@@ -192,7 +143,12 @@
             padding: 0.3rem;
         }
     }
+
+
+  
 }
+
+
 
 .divPrateleira {
   display: flex;
@@ -205,8 +161,8 @@
 
   & .Prateleira {
     height: 1rem;
-    transition: height 0.5s;
-    padding: 0;
+/*     transition: height 0.5s;
+ */    padding: 0;
     margin-top: 0;
 
     & .PrateleiraInfoContent {
@@ -217,8 +173,8 @@
       padding: 0;
       margin-top: 0;
       height: 0;
-       transition: height 0.3s; 
-      & p {
+/*        transition: height 0.3s; 
+ */      & p {
         color: rgb(255, 255, 255);
         margin: 0; 
         margin-bottom: 0.5rem; 
@@ -233,15 +189,15 @@
   }
 
    & .Prateleira:hover .PrateleiraInfoContent {
-    height: 32rem; 
+    height: 5rem; 
   }
 }
 
       
 
       & .Prateleira:hover{
-        height: 5rem;
-
+/*         height: 5rem;
+ */
 
       }
 
@@ -255,11 +211,11 @@
         width: 10rem;
         text-decoration: none;
         color: white;
-        background-color: #00A310;
-        margin-top: 1rem;
+        background-color: #077101db ;
+        
+        margin-top: 0rem;
         height: 2rem; 
-
-        border-radius:10px  10px    0  0px ;
+        border-radius:0px  0px    10px  10px ;
         transition: background-color 0.3s;
 
   
@@ -295,12 +251,14 @@
 
 
 .SimpleTimeline {
+  padding: 1rem;
     display: flex;
     flex-direction:column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+    background: radial-gradient(circle, #fcfcfc, #cbfccb); /* Cores de exemplo, ajuste conforme necessário */
   }
 
   & a {
@@ -372,7 +330,7 @@
       }
     
     .PostWiki{
-
+        
       
 
       & .SimpleTimeline {

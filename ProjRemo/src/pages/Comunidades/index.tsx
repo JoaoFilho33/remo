@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styleComunidades.css';
+import { Link } from 'react-router-dom';
 
 interface Comunidade {
   id: number;
@@ -65,6 +66,7 @@ export function Comunidades() {
     }
   };
   return (
+    <div className='ComunidadeCompleta'>
     <div className='Comunidade'>
       <h1>Espaço comunidade</h1>
       <div className='AllComunidades'>
@@ -89,7 +91,7 @@ export function Comunidades() {
                     value={descricao}
                     onChange={(e) => setDescricao(e.target.value)}
                   />
-                  <div className='TipoConteudo'>
+                  {/* <div className='TipoConteudo'>
                     <label>Tipo de Conteúdo:</label>
                     <div>
                     <label>
@@ -153,7 +155,6 @@ export function Comunidades() {
                       Outros
                     </label>
                     </div>
-                    {/* Adicione mais tipos de conteúdo conforme necessário */}
                   </div>
                   <div className='Subcategorias'>
                     <label>Subcategorias:</label>
@@ -220,8 +221,7 @@ export function Comunidades() {
                     </label>
                     </div>
                     
-                    {/* Adicione mais subcategorias conforme necessário */}
-                  </div>
+                  </div> */}
                   <button onClick={criarComunidade}>Criar Comunidade</button>
                   {erro && <p style={{ color: 'red' }}>{erro}</p>} {/* Exibir mensagem de erro, se houver */}
                 </div>
@@ -234,13 +234,15 @@ export function Comunidades() {
               <span>Crie uma comunidade para começar a escrever suas wikis</span>
             </div>
           ) : (
-            comunidades.map((comunidade, index) => (
-              <p key={index}>
-                <a href={`/Perfil/Comunidade/${index}`}>{comunidade.nome}</a>
+            comunidades.map((comunidade) => (
+              <p key={comunidade.id}>
+                <Link to={`/Perfil/Comunidade/${comunidade.id}`}>{comunidade.nome}</Link>
               </p>
             ))
+            
           )}
         </div>
+      </div>
       </div>
     </div>
   );

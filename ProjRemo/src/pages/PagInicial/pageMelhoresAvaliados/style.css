@@ -1,0 +1,11 @@
+.page-melhores-avaliados {
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle, hsl(0, 0%, 99%), #c9f7c9);
+    margin-top: 0;
+}
+
+.page-melhores-avaliados h2 {
+    color: green;
+    font-size: xx-large;
+}

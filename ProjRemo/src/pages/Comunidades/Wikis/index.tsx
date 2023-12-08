@@ -36,25 +36,29 @@ export function Wikis() {
   }, [id]);
 
   return (
+    <div className="WikiAllDiv">
     <div className="TextWiki">
       {wiki ? (
-        <>
+        <div className="ExibindoWiki">
+          <div className="titulowikiDiv">
+
           <h1>{wiki.titulo}</h1>
-          <p>{wiki.conteudo}</p>
+          </div>
+          <div className="ConteudoWikiDiv">{wiki.conteudo}</div>
 
           <div className="GoToComunidade">
-            {/* COmo estou com problemas em conseguir mapear a minha comunidade esse botão n funciona */}
-            {/* Verifica se wiki.comunidade existe antes de acessar suas propriedades */}
+           
             {wiki.comunidade && (
               <Link to={`/Perfil/Comunidade/${wiki.comunidade.id}`}>
                 @{wiki.comunidade.nome}
               </Link>
             )}
           </div>
-        </>
+        </div>
       ) : (
         <p>Carregando...</p>
       )}
+    </div>
     </div>
   );
 }

@@ -148,6 +148,11 @@ interface Postagem {
   nomeUser: string;
 }
 
+interface PrateleiraFilme {
+  id: number;
+  status_filme: 'visto' | 'pausa' | 'fila';
+}
+
 interface Wiki {
   id: number;
   titulo: string;
@@ -160,7 +165,7 @@ interface Wiki {
 
 export function PerfilUser() {
 
-  const [postagens, setPostagens] = useState([
+  /* const [postagens, setPostagens] = useState([
     { id: 8, filme: "Viva: a vida é uma festa1", like: false ,nomeUser: "maria"},
     { id: 9, filme: "Viva: a vida é uma festa2", like: false ,nomeUser: "joao"},
     { id: 10, filme: "Viva: a vida é uma festa3", like: false ,nomeUser: "kaka"},
@@ -168,7 +173,7 @@ export function PerfilUser() {
     { id: 13, filme: "Viva: a vida é uma festa3", like: false ,nomeUser: "kaka"},
     { id: 122, filme: "Viva: a vida é uma festa3", like: false ,nomeUser: "kaka"},
   
-  ]);
+  ]); */
 
 /*   const [postagens, setPostagens] = useState<Postagem[]>([]);
  */  const [wikis, setWikis] = useState<Wiki[]>([]);
@@ -176,7 +181,7 @@ export function PerfilUser() {
   const postsPerPage = window.innerWidth <= 570 ? 2 : 4;
   const [showPrateleiraInfo, setShowPrateleiraInfo] = useState(false);
 
-  useEffect(() => {
+ /*  
     // Função para obter postagens da API (substitua pela sua lógica real)
     const fetchPostagens = async () => {
       try {
@@ -186,9 +191,10 @@ export function PerfilUser() {
       } catch (error) {
         console.error('Erro ao obter dados de postagens da API', error);
       }
-    };
+    }; */
 
     // Função para obter wikis da API (substitua pela sua lógica real)
+    useEffect(() => {
     const fetchWikis = async () => {
       try {
         // Substitua a URL pela sua API de wikis
@@ -199,11 +205,11 @@ export function PerfilUser() {
       }
     };
 
-    fetchPostagens();
+  /*   fetchPostagens(); */
     fetchWikis();
   }, []);
 
-  const handleNext = () => {
+ /*  const handleNext = () => {
     if (currentIndex + postsPerPage < postagens.length) {
       setCurrentIndex(currentIndex + postsPerPage);
     }
@@ -214,8 +220,8 @@ export function PerfilUser() {
       setCurrentIndex(currentIndex - postsPerPage);
     }
   };
-
-  const editarCurtiu = (postId: number, novoLike: boolean) => {
+ */
+ /*  const editarCurtiu = (postId: number, novoLike: boolean) => {
     const novasPostagens = postagens.map(postagem => {
       if (postagem.id === postId) {
         return { ...postagem, like: novoLike };
@@ -223,65 +229,67 @@ export function PerfilUser() {
       return postagem;
     });
     setPostagens(novasPostagens);
-  };
+  }; */
+
+  const [prateleiraFilmes, setPrateleiraFilmes] = useState<PrateleiraFilme[]>([]);
+
+  useEffect(() => {
+    const fetchPrateleiraFilmes = async () => {
+      try {
+        const response = await axios.get<PrateleiraFilme[]>('http://localhost:8080/prateleiraFilme/1');
+        setPrateleiraFilmes(response.data);
+      } catch (error) {
+        console.error('Erro ao obter dados de prateleiraFilmes da API', error);
+      }
+    };
+
+    fetchPrateleiraFilmes();
+  }, []);
+
+  /* const filmesVistos = prateleiraFilmes.filter(filme => filme.status_filme   === 'visto').length;
+  const filmesEmPausa = prateleiraFilmes.filter(filme => filme.status_filme === 'pausa').length;
+  const filmesNaFila = prateleiraFilmes.filter(filme => filme.status_filme === 'fila').length;
+
+ */
 
   return (
     <div className="ContainerPerfil">
       <div className='divPrateleira'>
-        <div
+      <div
           className="Prateleira"
-          onMouseEnter={() => setShowPrateleiraInfo(true)}
-          onMouseLeave={() => setShowPrateleiraInfo(false)}
+         /*  onMouseEnter={() => setShowPrateleiraInfo(true)}
+          onMouseLeave={() => setShowPrateleiraInfo(false)} */
         >
           <Link className='GoOutraPag' to="/Perfil/Prateleira/:id">
             <p>Prateleira</p>
           </Link>
-          {showPrateleiraInfo && (
+      {/*     {showPrateleiraInfo && (
             <div className="PrateleiraInfoContent">
-              <p>Filmes Vistos: X</p>
-              <p>Em Pausa: Y</p>
-              <p>Na Fila: Z</p>
+              <p>Filmes Vistos: {filmesVistos}</p>
+              <p>Em Pausa: {filmesEmPausa}</p>
+              <p>Na Fila: {filmesNaFila}</p>
             </div>
-          )}
+          )} */}
         </div>
         <Link className='GoOutraPag' to="/Perfil/Comunidade">
           <p>Comunidades</p>
         </Link>
       </div>
-      <h2>Minhas postagens</h2>
-      <div className='linha'></div>
-
-      <div className="GrupPostagens">
-        <div className="PostagemContainer">
-          {postagens.slice(currentIndex, currentIndex + postsPerPage).map((postagem) => (
-            <div className="Postagem" key={postagem.id}>
-              <span>@{postagem.nomeUser}</span>
-              <p>{postagem.filme.length > 25 ? `${postagem.filme.substring(0, 25)}...` : postagem.filme}</p>
-{/*               <p>{postagem.like ? "Curtiu" : "Não curtiu"}</p>
- */}              <div className='BtBotoes'>
-                <button className={postagem.like ? 'like' : 'dislike'}  // Adiciona a classe condicionalmente
-               onClick={() => editarCurtiu(postagem.id, !postagem.like)}>
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="ControlesCarrossel">
-          <button onClick={handlePrevious}>Anterior</button>
-          <button onClick={handleNext}>Próximo</button>
-        </div>
-      </div>
 
       <div className='CorpoPag'>
         <div className='PostWiki'>
+          <div className='detalhe'>
+
+          <div className='linhah2'></div>
           <h2>Minhas wikis</h2>
+          </div>
+
+         
           <div className="SimpleTimeline">
             {wikis.map((wiki) => (
               <Link to={`/Wiki/${wiki.id}`} key={wiki.id} className="WikiItem">
                 <h3>{wiki.titulo}</h3>
-                <p>{wiki.conteudo}</p>
-              </Link>
+                <p>{wiki.conteudo.slice(0, 30)}...</p>              </Link>
             ))}
           </div>
         </div>

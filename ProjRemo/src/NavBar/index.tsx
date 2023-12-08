@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export function NavBar() {
   // Simulando um estado para o nome do usuário atual
-  const [userName] = useState('NomeDoUsuario');
+  const [userName] = useState('mariavitoria');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handlePesquisa = (termoPesquisa: string) => {

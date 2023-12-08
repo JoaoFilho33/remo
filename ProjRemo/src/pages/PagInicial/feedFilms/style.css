@@ -1,0 +1,25 @@
+.feed_melhor-avaliado {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    overflow: hidden;
+    padding-top: .8rem;
+    /* background: url("https://static.wikia.nocookie.net/1e17bced-251e-4c43-b3ac-ed39ee07cb94"),rgba(6, 110, 6, 0.7); */
+
+    & .feed__sinopse-container {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        margin-top: auto;
+        background-color: rgb(5, 134, 74);
+        height: 5rem;
+    }
+
+    & .feed__sinopse {
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22.5px;
+        margin: 0;
+    }
+}

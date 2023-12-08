@@ -1,12 +1,47 @@
-.TextWiki{
-   margin-top: 1rem;
-   background-color: rgb(252, 252, 252);
+& .WikiAllDiv{
+   margin: 0;
+   background: radial-gradient(circle, #fcfcfc, #cbfccb); /* Cores de exemplo, ajuste conforme necessário */
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+
+& .TextWiki{
+   margin-left: 12rem;
+   max-width: 55rem;
+   margin-top: 50px;
+   background-color: rgb(231, 231, 231);
     display: flex;
     flex-direction: column;
-    & h1 {
-       align-self: center;
+    padding: 1rem;
+
+   
+
+    & .ExibindoWiki{
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         
+
+         & .ConteudoWikiDiv{
+         display: flex;
+         flex-wrap: wrap;
+         color: #073000;
+       }
+
+       & .titulowikiDiv {
+         border-radius: 2px;
+         background-color: rgb(255, 255, 255);
+         display: flex;
+         justify-content: center;
+         margin-bottom: 2rem;
+         color: rgb(5, 106, 5);
+   
+       }
     }
+
+
     & .GoToComunidade{
+      margin-top: 5rem;
          display: flex;
          flex-direction: row-reverse;
 
@@ -30,4 +65,5 @@
         
         
     }
+}
 }
